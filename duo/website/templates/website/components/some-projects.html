@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    {% for project in projects %}
+        <div>
+            <a href="{% url 'project_details' project.slug %}" class="transition hover:-translate-y-6 duration-500 ">
+                <div class="rounded-lg shadow-xl bg-white transition hover:-translate-y-6 duration-500">
+                    <img src="{{ project.main_image.url }}" alt="gips" class="w-[400px] h-[400px] object-cover rounded-t-lg"/>
+                    <div class="p-5">
+                        <h3>{{ project.title }}</h3>
+    <!--                    <p>{{ project.short_description|slice:100 }}...</p>-->
+                        {% if project.short_description|length > 100 %}
+                            <p>{{ project.short_description|slice:100 }}...</p>
+                        {% else %}
+                            <p>{{ project.short_description }}</p>
+                        {% endif %}
+                        <br>
+                        <br><br>
+                        <div>
+                            {% for tag in project.tags.all %}
+                                <span class="px-2 text-white bg-blue-200 rounded-lg">{{tag}}</span>
+                            {% endfor %}
+
+                        </div>
+                        <br><br>
+                        <p class="text-end">{{ project.date }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+

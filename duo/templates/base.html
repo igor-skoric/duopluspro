@@ -1,0 +1,129 @@
+
+{% load static %}
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} test{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% tailwind_css %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+</head>
+
+<!-- Postaviti klasu overflow-x-hidden-->
+<body class=" bg-cover bg-no-repeat bg-center bg-fixed" style="background-image: url('{% static 'img/bg1.jpg' %}');">
+    <!-- Ikonica koja vodi na početak -->
+
+
+
+    {% include 'header.html' %}
+
+
+        <!-- Fade-In animations -->
+<!--        <div class="opacity-0 fade-in-fast-on-scroll">-->
+<!--          <p>Brzo Fade-in</p>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 fade-in-medium-on-scroll">-->
+<!--          <p>Srednje Fade-in</p>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 fade-in-slow-on-scroll">-->
+<!--          <p>Sporo Fade-in</p>-->
+<!--        </div>-->
+<!--        -->
+<!--        &lt;!&ndash; Slide-In Right animations &ndash;&gt;-->
+<!--        <div class="opacity-0 slide-in-right-fast-on-scroll">-->
+<!--          <h2>Brzo Slide-In sa desne strane</h2>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 slide-in-right-medium-on-scroll">-->
+<!--          <h2>Srednje Slide-In sa desne strane</h2>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 slide-in-right-slow-on-scroll">-->
+<!--          <h2>Sporo Slide-In sa desne strane</h2>-->
+<!--        </div>-->
+<!--        -->
+<!--        &lt;!&ndash; Slide-In Left animations &ndash;&gt;-->
+<!--        <div class="opacity-0 slide-in-left-fast-on-scroll">-->
+<!--          <h2>Brzo Slide-In sa leve strane</h2>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 slide-in-left-medium-on-scroll">-->
+<!--          <h2>Srednje Slide-In sa leve strane</h2>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 slide-in-left-slow-on-scroll">-->
+<!--          <h2>Sporo Slide-In sa leve strane</h2>-->
+<!--        </div>-->
+<!--        -->
+<!--        &lt;!&ndash; Slide-Up animations &ndash;&gt;-->
+<!--        <div class="opacity-0 slide-up-fast-on-scroll">-->
+<!--          <footer>Brzo Slide-up</footer>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 slide-up-medium-on-scroll">-->
+<!--          <footer>Srednje Slide-up</footer>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 slide-up-slow-on-scroll">-->
+<!--          <footer>Sporo Slide-up</footer>-->
+<!--        </div>-->
+<!--        -->
+<!--        &lt;!&ndash; Scale-Up animations &ndash;&gt;-->
+<!--        <div class="opacity-0 scale-up-fast-on-scroll">-->
+<!--          <button>Brzo Scale-up</button>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 scale-up-medium-on-scroll">-->
+<!--          <button>Srednje Scale-up</button>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="opacity-0 scale-up-slow-on-scroll">-->
+<!--          <button>Sporo Scale-up</button>-->
+<!--        </div>-->
+
+
+    {% block content %}
+    {% endblock %}
+
+<!--<style>-->
+<!--    .scroll-to-top:hover .metal-part {-->
+<!--        transform: translateY(-100px); /* Pomera metalni deo metra gore za 100px */-->
+<!--    }-->
+
+<!--</style>-->
+
+
+
+
+<a href="#top" class="scroll-to-top fixed -right-5 md:right-5 lg:right-10 bottom-0 z-50 text-white transition">
+    <div class="relative group ">
+        <!-- Metalni deo metra (gornja slika) -->
+        <img src="{% static 'img/9.png' %}" class="metal-part w-full absolute top-0 left-0 transition-transform duration-500 ease-out -translate-y-2 translate-x-1  group-hover:-translate-y-24 -z-10">
+        <!-- Metar (donja slika) -->
+        <img src="{% static 'img/8.png' %}" class="measure-part w-24 p-0 m-0">
+
+    </div>
+</a>
+
+
+
+    <!-- Dodaj ID 'top' na početak stranice -->
+    <div id="top"></div>
+
+    {% include 'footer.html' %}
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/animations.js' %}"></script>
+
+</body>
+
+</html>

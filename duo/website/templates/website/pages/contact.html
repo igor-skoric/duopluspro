@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+
+{% include 'website/components/hero.html' %}
+
+
+    <div class="absolute top-1/2 w-full lg:w-auto lg:left-1/2 transform lg:-translate-x-1/2 -translate-y-36 lg:-translate-y-72 flex flex-col lg:flex-row gap-16 p-5 ">
+        <div class="flex gap-10 justify-center flex-col shadow-xl rounded-lg p-5">
+            <!-- Ime -->
+            <a href="tel:{{site_config.telephone1.value}}">
+                <div class="flex gap-5 items-center bg-white rounded-xl p-5 lg:px-20 lg:py-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-in-left-medium-on-scroll">
+                    <div class="w-16 ">
+                        <img src="{% static 'img/icons/solar_phone-outline.png' %}" alt="" />
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="font-semibold">Telefon</div>
+                        <div>{{site_config.telephone1.value}}</div>
+                    </div>
+                </div>
+            </a>
+            <!-- Emai -->
+            <a href="mailto:{{site_config.email.value}}">
+                <div class="flex gap-5 items-center bg-white rounded-xl p-5 lg:px-20 lg:py-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-in-left-slow-on-scroll">
+                    <div class="w-16">
+                        <img src="{% static 'img/icons/email.png' %}" alt="" />
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="font-semibold">Email</div>
+                        <div>{{site_config.email.value}}</div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="flex gap-5 justify-center">
+                <a href="{{site_config.instagram.value}}">
+                    <div class="flex gap-5 items-center bg-white rounded-xl p-5  shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-up-fast-on-scroll">
+                        <div class="w-10">
+                            <img src="{% static 'img/icons/instagram.png' %}" alt="" />
+                        </div>
+                    </div>
+                </a>
+                <a href="whatsapp://send?phone={{site_config.whatsapp_no.value}}">
+                    <div class="flex gap-5 items-center bg-white rounded-xl p-5  shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-up-medium-on-scroll">
+                        <div class="w-10">
+                            <img src="{% static 'img/icons/whatsapp.png' %}" alt="" />
+                        </div>
+                    </div>
+                </a>
+                <a href="viber://chat/?number={{site_config.viber_no.value}}">
+                    <div class="flex gap-5 items-center bg-white rounded-xl p-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-up-slow-on-scroll">
+                        <div class="w-10">
+                            <img src="{% static 'img/icons/viber.png' %}" alt="" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="flex justify-center items-center shadow-xl rounded-lg p-5 ">
+            <div class="bg-white p-8 rounded-lg shadow-lg w-[500px] transition hover:-translate-y-6 duration-500 opacity-0 slide-in-right-medium-on-scroll">
+                <h2 class="text-2xl font-semibold mb-6 text-center">Postavite nam pitanje</h2>
+                <p class="text-center">U najkrаćem mogućem roku ćemo vas kontaktirati</p> <br>
+                <form action="#" method="POST" class="">
+                    <!-- Ime -->
+                    <div class="mb-4">
+                        <label for="ime" class="block text-sm font-semibold text-gray-700">Ime</label>
+                        <input type="text" id="ime" name="ime" required class="w-full p-3 mt-2 border border-gray-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300" placeholder="Unesite svoje ime">
+                    </div>
+
+                    <!-- Broj telefona -->
+                    <div class="mb-4">
+                        <label for="telefon" class="block text-sm font-semibold text-gray-700">Broj telefona</label>
+                        <input type="tel" id="telefon" name="telefon" required class="w-full p-3 mt-2 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300" placeholder="Unesite broj telefona">
+                    </div>
+
+                    <!-- Poruka -->
+                    <div class="mb-4">
+                        <label for="poruka" class="block text-sm font-semibold text-gray-700">Poruka</label>
+                        <textarea id="poruka" name="poruka" required rows="4" class="w-full p-3 mt-2 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300" placeholder="Unesite vašu poruku"></textarea>
+                    </div>
+
+                    <!-- Submit dugme -->
+                    <div class="mb-4">
+                        <button type="submit" class="w-full bg-[#DD6DBA] text-white p-3 rounded-lg hover:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-blue-500">Pošaljite</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="mt-[550px] lg:mt-[100px] xl:mt-[50px]"></div>
+
+
+
+{% endblock %}
+

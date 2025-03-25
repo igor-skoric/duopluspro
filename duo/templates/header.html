@@ -1,0 +1,26 @@
+{% load static %}
+<!--<div id="social" class="mx-auto">-->
+
+  <header class="text-white fixed top-0 left-0 w-full bg-black/80 relative ">
+    <div id="header" class=" z-[999] flex w-full items-center lg:min-h-18 lg:px-[10%] transition-transform duration-300 py-4">
+      <div class="mx-auto size-full lg:grid lg:grid-cols-2 lg:items-center lg:justify-between lg:gap-4">
+          <div class="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
+                <a href="{% url 'home' %}">
+                  <img src="{% static 'img/logo2.png' %}" alt="Logo image" class="w-[150px] sm:w-[200px]" />
+                </a>
+                <div class="flex items-center gap-4 lg:hidden">
+                  <button id="toggleMenu" class="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden ">
+                    <span class="my-[3px] h-0.5 w-6 bg-white"></span>
+                    <span class="my-[3px] h-0.5 w-6 bg-white"></span>
+                    <span class="my-[3px] h-0.5 w-6 bg-white"></span>
+                  </button>
+                </div>
+          </div>
+          <div id="mobileMenu" class="text-xl max-h-0 overflow-hidden flex-col px-[5%] text-center lg:flex lg:max-h-none lg:flex-row lg:items-center lg:justify-end lg:px-0 transition-all duration-500 ease-in-out">
+              <a href="{% url 'home' %}" class="group block py-3 text-md lg:px-4 lg:py-2 relative pt-5 ">Početna</a>
+              <a href="{% url 'projects' %}" class="group block py-3 text-md lg:px-4 lg:py-2 relative">Projekti</a>
+              <a href="{% url 'contact' %}" class="group block py-3 text-md lg:px-4 lg:py-2 relative">Kontakt</a>
+          </div>
+      </div>
+    </div>
+  </header>

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Project Details{% endblock %}
+
+{% block content %}
+
+
+<section class="mx-auto max-w-[1200px] mt-20">
+    <div class="px-5">
+        {% include 'website/components/back.html' %}
+    </div>
+    <div class="flex gap-10 justify-center items-center flex-col lg:flex-row px-5 md:px-10 lg:p-5">
+        <div class="">
+            <img src="{{project.main_image.url}}" alt="" class="md:max-w-[400px] rounded-xl"/>
+        </div>
+        <div class="">
+            <h1 class="text-center">{{project.title}}</h1>
+            <br>
+            <p>{{project.short_description}}</p><br>
+            {{project.long_description|safe}}
+            <br><br>
+            {% for tag in project.tags.all %}
+
+                <span class="px-2 text-white bg-blue-200 rounded-lg">{{tag}}</span>
+            {% endfor %}
+            <br><br>
+            <p class="text-end font-bold">{{project.date}}</p>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br>
+    {% include 'website/components/some-projects.html' %}
+    {% include 'website/components/gallery.html' with images=project.images.all %}
+
+
+</section>
+
+
+
+
+{% endblock %}
+

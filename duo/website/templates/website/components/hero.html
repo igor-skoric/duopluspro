@@ -1,0 +1,24 @@
+
+{% load static %}
+
+<div class="relative">
+    <!-- Slika sa fiksnom visinom ekrana i automatskom širinom -->
+    <img src="{% static 'img/hero2.png' %}" class="relative w-auto h-screen lg:w-full lg:h-auto object-cover {% if request.path == '/contact/' %}blur-sm{% endif %}">
+
+
+    {% if request.path == '/contact/' %}
+
+    {% else %}
+        <!-- Pozicioniranje teksta sa poluprovidnim crnim pozadinskim slojem -->
+        <div class="opacity-0 fade-in-fast-on-load p-3 md:p-7 rounded-xl bg-black/30  absolute top-1/4 left-0 right-0 transform -translate-y-1/2 flex justify-center flex-col items-center text-center ">
+            <!-- Naslov sa dinamičnim veličinama fonta -->
+            <h1 class="text-white text-4xl md:text-6xl font-bold "><span class="text-rose-200">Transformišite</span> Svoj <span class="text-indigo-300">Prostor</span>  </h1><br>
+            <!-- Podnaslov sa dinamičnim veličinama fonta -->
+            <p class="text-white text-lg text-center font-semibold ">Preobrazite svoj dom uz našu stručnost u izradi <span class="text-blue-200">nameštaja po meri i adaptaciji stanova.</span>
+            <br>Svaki detalj, savršeno usklađen sa vašim potrebama i stilom života.</p>
+        </div>
+    {% endif %}
+
+</div>
+
+

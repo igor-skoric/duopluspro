@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Index jeah{% endblock %}
+
+{% block content %}
+
+    {% include 'website/components/hero.html' %}
+
+    <div class="animate-fade-in lg:mb-20 text-white px-5 lg:px-32 py-2 lg:py-3 text-2xl lg:text-4xl mx-auto bg-[#4A4B4D] flex justify-center items-center rounded-lg w-fit transform -translate-y-1/2">
+        <p class="flex flex-col items-center lg:flex-row gap-2 lg:gap-5">
+            <img src="{% static 'img/icons/tool.png' %}" alt="Project icon" class="w-12 text-blue-200" />
+            <span class="font-sans">Nameštaj Po Meri</span>
+            <span>&</span>
+            <span>Adaptacija Stanova</span>
+        </p>
+    </div>
+    <div class="">
+        {% include 'website/components/section1.html' %}
+    </div>
+
+
+    <div class="bg-white bg-[#F1F1F1] mt-20 lg:mt-40 mb-10 lg:mb-40">
+        <div class="container">
+            <div class="text-white px-6 md:px-16 lg:px-32 py-2 lg:py-3 text-2xl lg:text-4xl  bg-[#4A4B4D] rounded-lg w-fit transform -translate-y-1/2">
+                <p class="text-center flex gap-3 lg:gap-5 justify-center items-center"><img src="{% static 'img/icons/bi_house-heart-fill.png' %}" alt="" class="h-10"/>Personalizujte Svoj Prostor</p>
+            </div>
+            <h2 class="">Kuhinje i Plakari</h2><br>
+        </div>
+    </div>
+
+    {% include 'website/components/section2.html' %}
+
+    <div class="bg-white bg-[#F1F1F1] mt-20 lg:mt-40 mb-10 lg:mb-40">
+        <div class="container">
+            <div class="text-white px-8 md:px-16 lg:px-32 py-2 lg:py-3 text-2xl lg:text-4xl  bg-[#4A4B4D] rounded-lg w-fit transform -translate-y-1/2">
+                <p class="text-center flex gap-5 justify-center items-center"><img src="{% static 'img/icons/bi_house-heart-fill.png' %}" alt="" class="h-10"/>Šta adaptacija objekta obuhvata</p>
+            </div>
+            <h2 class="">Pogledajte neke od naših usluga</h2><br>
+        </div>
+    </div>
+
+    {% include 'website/components/services.html' %}
+
+    <div class="bg-white mt-20 lg:mt-40 mb-10 lg:mb-40">
+        <div class="container">
+            <div class="text-white px-8 md:px-16 lg:px-32 py-2 lg:py-3 text-2xl lg:text-4xl  bg-[#4A4B4D] rounded-lg w-fit transform -translate-y-1/2">
+                <p class="text-center flex gap-5 justify-center items-center"><img src="{% static 'img/icons/bi_house-heart-fill.png' %}" alt="" class="h-10"/>Naši projekti</p>
+            </div>
+            <h2 class="">Pogledajte neke od naših projekata</h2><br>
+        </div>
+    </div>
+    <section id="section1" class="mx-auto max-w-[1200px] px-5 ">
+        <div class="flex justify-end">
+            <a href="{% url 'projects' %}" class="flex justify-center items-center">
+                <p class="">Pogledaj vise</p>
+                <img src="{% static 'img/icons/arrow-right.png' %}" class="h-4" alt="Arrow right"/>
+            </a>
+        </div>
+        <br>
+
+        {% include 'website/components/some-projects.html' with projects=projects %}
+    </section>
+
+    {% include 'website/components/stats.html' %}
+
+{% endblock %}
+

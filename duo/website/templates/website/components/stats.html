@@ -1,0 +1,35 @@
+{% load static %}
+
+<section id="stats" class="mt-20 bg-black/80 shadow-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 p-5">
+        <div class="border-r flex flex-col items-center justify-center text-white rounded-xl opacity-0 slide-in-left-medium-on-scroll">
+            <img src="{% static 'img/icons/blue-project.png' %}" alt="Project icon" class="w-16 text-blue-200" />
+            <br>
+            <p>Adaptacija stanova</p>
+            <p id="number1" class="text-3xl count-up-on-scroll" data-target="10">0</p>
+        </div>
+        <div class="border-r flex flex-col items-center justify-center text-white rounded-xl opacity-0 slide-up-medium-on-scroll">
+            <img src="{% static 'img/icons/kitchen.png' %}" alt="Project icon" class="w-16 text-blue-200" />
+            <br>
+            <p>Napravljenih Kuhinja</p>
+            <p id="number2" class="text-3xl count-up-on-scroll" data-target="33">0</p>
+        </div>
+        <div class="border-r flex flex-col items-center justify-center text-white rounded-xl opacity-0 slide-up-medium-on-scroll">
+            <img src="{% static 'img/icons/closet.png' %}" alt="Project icon" class="w-16 text-blue-200" />
+            <br>
+            <p>Napravljenih Plakara</p>
+            <p id="number3" class="text-3xl count-up-on-scroll" data-target="65">0</p>
+        </div>
+        <div class="border-r flex flex-col items-center justify-center text-white rounded-xl opacity-0 slide-in-right-medium-on-scroll">
+            <img src="{% static 'img/icons/users.png' %}" alt="Project icon" class="w-16 text-blue-200" />
+            <br>
+            <p>Zadovoljnih klijenata</p>
+            <p id="number4" class="text-3xl count-up-on-scroll" data-target="67">0</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+

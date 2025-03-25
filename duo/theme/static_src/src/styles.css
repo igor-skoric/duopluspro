@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.container {
+  @apply mx-auto px-4 md:px-6 lg:px-8;
+  max-width: 1200px;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5 {
+    @apply text-gray-900 font-bold mb-4 transition-all;
+  }
+
+  h1 {
+    @apply text-4xl ;
+  }
+
+  h2 {
+    @apply text-3xl ;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+ }
+
+
+@layer components {
+  .animated-text {
+    @apply inline-block  tracking-wide overflow-hidden whitespace-nowrap;
+    display: inline-block;
+    animation: typing 4s steps(20) 1s forwards;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+}

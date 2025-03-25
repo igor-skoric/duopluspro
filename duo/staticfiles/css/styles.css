@@ -1,0 +1,16 @@
+/* Pseudo-element za liniju */
+#mobileMenu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* Debljina linije */
+  background-color: #FF66C4; /* Boja linije */
+  transition: width 0.3s ease; /* Animacija širenja linije */
+}
+
+/* Hover efekat za linkove */
+#mobileMenu a.group:hover::after {
+  width: 100%; /* Linija će se širiti do 100% širine linka */
+}

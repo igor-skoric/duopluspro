@@ -1,0 +1,38 @@
+{% load static %}
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-6">
+        <!-- Slika 1 -->
+        {% for image in images %}
+            <div class="relative w-full aspect-w-16 aspect-h-9">
+                <img src="{{image.image.url}}" alt="Slika 1" class="w-full h-full object-cover cursor-pointer rounded-xl" onclick="openModal('{{image.image.url}}')">
+            </div>
+        {% endfor %}
+
+
+        <!-- Dodaj više slika po potrebi -->
+    </div>
+
+    <!-- Modal za prikaz slike u većem formatu -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div class="relative max-w-full max-h-full p-4">
+            <button onclick="closeModal()" class="absolute top-4 right-6 text-white text-3xl">&times;</button>
+            <img id="modal-image" src="" alt="" class="max-w-full max-h-screen object-contain">
+        </div>
+    </div>
+
+    <script>
+        // Funkcija za otvaranje modala sa većom slikom
+        function openModal(imageSrc) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+        }
+
+        // Funkcija za zatvaranje modala
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+        }
+    </script>
