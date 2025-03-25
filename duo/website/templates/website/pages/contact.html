@@ -6,10 +6,10 @@
 {% block content %}
 
 
-{% include 'website/components/hero.html' %}
+    {% include 'website/components/hero.html' %}
 
 
-    <div class="absolute top-1/2 w-full lg:w-auto lg:left-1/2 transform lg:-translate-x-1/2 -translate-y-36 lg:-translate-y-72 flex flex-col lg:flex-row gap-16 p-5 ">
+    <div id="contact" class="absolute top-1/2 w-full lg:w-auto lg:left-1/2 transform lg:-translate-x-1/2 -translate-y-36 lg:-translate-y-72 flex flex-col lg:flex-row gap-16 p-5 duration-500">
         <div class="flex gap-10 justify-center flex-col shadow-xl rounded-lg p-5">
             <!-- Ime -->
             <a href="tel:{{site_config.telephone1.value}}">

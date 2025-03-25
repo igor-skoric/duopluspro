@@ -10,3 +10,4 @@ def site_config(request):
 
     config_data = {config.name: config for config in Config.objects.all()}
     return {'site_config': config_data, 'adaptation': adaptation, 'furniture': furniture}
+
