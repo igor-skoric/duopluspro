@@ -11,4 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.classList.remove('max-h-[500px]');
     }
   });
+
+    document.querySelector('.scroll-to-top').addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+
+
+
+
+
 });
