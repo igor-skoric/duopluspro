@@ -22747,3 +22747,5 @@ INFO 2025-03-26 12:02:37,831 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 INFO 2025-03-26 12:04:34,673 basehttp "GET /admin/website/config/ HTTP/1.1" 200 17494
 INFO 2025-03-26 12:04:34,744 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 INFO 2025-03-26 12:04:36,735 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 12:04:36,958 basehttp "GET /admin/website/config/ HTTP/1.1" 200 17494
+INFO 2025-03-26 12:04:36,976 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342

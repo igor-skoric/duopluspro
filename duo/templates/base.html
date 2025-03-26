@@ -8,11 +8,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} test{% endblock %}</title>
+    <title>{% block title %}  {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% tailwind_css %}
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png" class="h-6">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <!-- Meta Tagovi za SEO -->
+    <meta name="description" content="Izrada nameštaja po meri za kuhinje, plakare, komode, fioke i druge komade nameštaja. Pružamo usluge adaptacije stanova, građevinskih radova, rušenja, struje, vode, podova i zamene instalacija.">
+    <meta name="keywords" content="izrada nameštaja po meri, kuhinje po meri, plakari po meri, komode, fioke, adaptacija stanova, građevinski radovi, rušenje, struja, voda, podovi, zamena instalacija, renoviranje stanova, plocice">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Izrada Nameštaja i Adaptacija Stanova - Projekti Po Meri">
+    <meta property="og:description" content="Specijalizovani smo za izradu nameštaja po meri (kuhinje, plakari, komode, fioke) i adaptaciju stanova, sa uslugama kao što su rušenje, struja, voda, podovi i zamena instalacija.">
+    <meta property="og:url" content="https://www.duopluspro.rs">
+    <meta property="og:image" content="https://www.duopluspro.com{% static 'img/thumbnail.png' %}">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Izrada Nameštaja i Adaptacija Stanova - Projekti Po Meri">
+    <meta name="twitter:description" content="Pružamo usluge izrade nameštaja po meri i adaptacije stanova. Renovirajte svoj prostor sa našim profesionalnim građevinskim radovima i uslugama.">
+    <meta name="twitter:image" content="https://www.duopluspro.com{% static 'img/thumbnail.png' %}">
 
 </head>
 
