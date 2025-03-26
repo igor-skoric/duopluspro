@@ -22414,3 +22414,10 @@ INFO 2025-03-26 11:01:07,333 basehttp "GET /static/jazzmin/js/change_form.js HTT
 INFO 2025-03-26 11:01:08,380 basehttp "POST /admin/website/tag/add/ HTTP/1.1" 302 0
 INFO 2025-03-26 11:01:08,398 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16863
 INFO 2025-03-26 11:01:08,460 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:06:23,888 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:06:49,899 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16311
+INFO 2025-03-26 11:06:49,939 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:06:53,139 basehttp "POST /admin/website/tag/ HTTP/1.1" 200 12752
+INFO 2025-03-26 11:06:53,929 basehttp "POST /admin/website/tag/ HTTP/1.1" 302 0
+INFO 2025-03-26 11:06:53,970 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16449
+INFO 2025-03-26 11:06:54,064 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
