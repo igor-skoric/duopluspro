@@ -155,12 +155,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.duo.rs'  # SMTP server za vašu domenu (npr. cPanel)
+EMAIL_HOST = 'mail.duopluspro.rs'  # SMTP server za vašu domenu (npr. cPanel)
 EMAIL_PORT = 587    # Koristi 587 za TLS (ako koristite TLS enkripciju)
 EMAIL_USE_TLS = True  # Uključivanje TLS enkripcije (ili False ako ne koristiš TLS)
-EMAIL_HOST_USER = 'contact@duo.rs'  # Tvoj email
-EMAIL_HOST_PASSWORD = ''  # Tvoj email password (ili aplikacijski password)
-DEFAULT_FROM_EMAIL = 'contact@duo.rs'  # Email sa kojeg ćeš slati poruke
+EMAIL_HOST_USER = 'contact@duopluspro.rs'  # Tvoj email
+EMAIL_HOST_PASSWORD = 'JW6OqiaQob,o'  # Tvoj email password (ili aplikacijski password)
+DEFAULT_FROM_EMAIL = 'contact@duopluspro.rs'  # Email sa kojeg ćeš slati poruke
 
 
 

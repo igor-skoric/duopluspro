@@ -1046,6 +1046,10 @@ h5 {
   margin-top: 550px;
 }
 
+.mt-\[750px\] {
+  margin-top: 750px;
+}
+
 .block {
   display: block;
 }
@@ -2090,6 +2094,10 @@ h5 {
     margin-top: 0px;
   }
 
+  .md\:w-16 {
+    width: 4rem;
+  }
+
   .md\:max-w-\[400px\] {
     max-width: 400px;
   }
@@ -2110,6 +2118,10 @@ h5 {
     align-items: center;
   }
 
+  .md\:gap-5 {
+    gap: 1.25rem;
+  }
+
   .md\:gap-x-8 {
     -moz-column-gap: 2rem;
          column-gap: 2rem;
@@ -2125,6 +2137,14 @@ h5 {
 
   .md\:p-7 {
     padding: 1.75rem;
+  }
+
+  .md\:p-8 {
+    padding: 2rem;
+  }
+
+  .md\:p-5 {
+    padding: 1.25rem;
   }
 
   .md\:px-10 {

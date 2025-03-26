@@ -22429,3 +22429,152 @@ INFO 2025-03-26 11:14:09,791 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
 INFO 2025-03-26 11:14:11,420 basehttp "POST /admin/website/tag/add/ HTTP/1.1" 302 0
 INFO 2025-03-26 11:14:11,442 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16863
 INFO 2025-03-26 11:14:11,510 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:24:23,426 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:24:28,865 basehttp "POST /admin/website/tag/ HTTP/1.1" 200 12752
+INFO 2025-03-26 11:24:29,994 basehttp "POST /admin/website/tag/ HTTP/1.1" 302 0
+INFO 2025-03-26 11:24:30,029 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16449
+INFO 2025-03-26 11:24:30,079 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:27:30,080 basehttp "GET /admin/website/project/ HTTP/1.1" 200 13227
+INFO 2025-03-26 11:27:30,107 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:27:32,374 basehttp "GET /admin/website/config/ HTTP/1.1" 200 17119
+INFO 2025-03-26 11:27:32,404 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:27:36,553 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:27:36,648 basehttp "GET /static/css/dist/styles.css?v=1742984856 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:33:09,995 autoreload D:\projects\duopluspro\duo\duo\duo\settings.py changed, reloading.
+INFO 2025-03-26 11:33:10,643 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:33:10,798 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:33:10,858 basehttp "GET /static/css/dist/styles.css?v=1742985190 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:33:39,870 autoreload D:\projects\duopluspro\duo\duo\duo\settings.py changed, reloading.
+INFO 2025-03-26 11:40:14,915 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:40:15,788 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:40:15,904 basehttp "GET /static/css/dist/styles.css?v=1742985615 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:40:21,676 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:40:21,696 basehttp "GET /static/css/dist/styles.css?v=1742985621 HTTP/1.1" 200 40469
+ERROR 2025-03-26 11:40:23,400 log Internal Server Error: /contact/
+Traceback (most recent call last):
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\duo\website\views.py", line 33, in contact
+    return render(request, 'website/pages/contact.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\projects\duopluspro\duo\env\scripts\python.py\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'message' not found. 'message' is not a valid view function or pattern name.
+ERROR 2025-03-26 11:40:23,409 basehttp "GET /contact/ HTTP/1.1" 500 160364
+WARNING 2025-03-26 11:40:23,666 log Not Found: /favicon.ico
+WARNING 2025-03-26 11:40:23,666 basehttp "GET /favicon.ico HTTP/1.1" 404 4449
+INFO 2025-03-26 11:40:37,977 autoreload D:\projects\duopluspro\duo\duo\website\urls.py changed, reloading.
+INFO 2025-03-26 11:40:38,931 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:40:39,345 basehttp "GET /contact/ HTTP/1.1" 200 14530
+INFO 2025-03-26 11:40:39,408 basehttp "GET /static/img/icons/solar_phone-outline.png HTTP/1.1" 304 0
+INFO 2025-03-26 11:40:39,408 basehttp "GET /static/img/icons/email.png HTTP/1.1" 304 0
+INFO 2025-03-26 11:40:39,477 basehttp "GET /static/css/dist/styles.css?v=1742985639 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:41:17,671 basehttp "POST /message/ HTTP/1.1" 302 0
+INFO 2025-03-26 11:41:17,688 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:41:17,719 basehttp "GET /static/css/dist/styles.css?v=1742985677 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:42:29,048 basehttp "GET /contact/ HTTP/1.1" 200 14530
+INFO 2025-03-26 11:42:29,072 basehttp "GET /static/css/dist/styles.css?v=1742985749 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:42:42,412 autoreload D:\projects\duopluspro\duo\duo\website\views.py changed, reloading.
+INFO 2025-03-26 11:42:42,927 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:42:43,138 basehttp "GET /contact/ HTTP/1.1" 200 14530
+INFO 2025-03-26 11:42:44,434 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:42:44,886 basehttp "GET /static/css/dist/styles.css?v=1742985763 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:43:23,962 basehttp "POST /message/ HTTP/1.1" 302 0
+INFO 2025-03-26 11:43:23,984 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:43:24,017 basehttp "GET /static/css/dist/styles.css?v=1742985803 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:46:41,658 autoreload D:\projects\duopluspro\duo\duo\website\views.py changed, reloading.
+INFO 2025-03-26 11:46:42,226 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:48:02,819 autoreload D:\projects\duopluspro\duo\duo\website\views.py changed, reloading.
+INFO 2025-03-26 11:48:03,473 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:48:03,851 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:48:03,920 basehttp "GET /static/css/dist/styles.css?v=1742986083 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:48:29,150 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:48:30,108 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:48:30,173 basehttp "GET /static/css/dist/styles.css?v=1742986109 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:48:38,821 basehttp "GET /contact/ HTTP/1.1" 200 14530
+INFO 2025-03-26 11:48:38,843 basehttp "GET /static/css/dist/styles.css?v=1742986118 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:48:39,483 basehttp "GET /contact/ HTTP/1.1" 200 14530
+INFO 2025-03-26 11:48:39,504 basehttp "GET /static/css/styles.css HTTP/1.1" 200 425
+INFO 2025-03-26 11:48:39,529 basehttp "GET /static/js/script.js HTTP/1.1" 200 1401
+INFO 2025-03-26 11:48:39,536 basehttp "GET /static/css/dist/styles.css?v=1742986119 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:48:39,539 basehttp "GET /static/img/home/hero.webp HTTP/1.1" 200 24890
+INFO 2025-03-26 11:48:39,543 basehttp "GET /static/img/icons/email.png HTTP/1.1" 200 4587
+INFO 2025-03-26 11:48:39,545 basehttp "GET /static/img/icons/solar_phone-outline.png HTTP/1.1" 200 6060
+INFO 2025-03-26 11:48:39,547 basehttp "GET /static/img/icons/instagram.png HTTP/1.1" 200 34257
+INFO 2025-03-26 11:48:39,549 basehttp "GET /static/img/logo2.png HTTP/1.1" 200 100326
+INFO 2025-03-26 11:48:39,582 basehttp "GET /static/js/animations.js HTTP/1.1" 200 3958
+INFO 2025-03-26 11:48:39,585 basehttp "GET /static/img/icons/viber.png HTTP/1.1" 200 5487
+INFO 2025-03-26 11:48:39,586 basehttp "GET /static/img/icons/whatsapp.png HTTP/1.1" 200 24148
+INFO 2025-03-26 11:48:39,589 basehttp "GET /static/django-browser-reload/reload-listener.js HTTP/1.1" 200 623
+INFO 2025-03-26 11:48:39,599 basehttp "GET /static/img/9.png HTTP/1.1" 200 168461
+INFO 2025-03-26 11:48:39,615 basehttp "GET /static/img/8.png HTTP/1.1" 200 188392
+INFO 2025-03-26 11:48:39,632 basehttp "GET /static/img/bg1.webp HTTP/1.1" 200 95372
+INFO 2025-03-26 11:48:39,700 basehttp "GET /static/img/logo.png HTTP/1.1" 200 393391
+INFO 2025-03-26 11:49:05,018 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:49:11,181 basehttp "GET / HTTP/1.1" 200 22761
+INFO 2025-03-26 11:49:11,356 basehttp "GET /static/css/dist/styles.css?v=1742986151 HTTP/1.1" 200 40469
+INFO 2025-03-26 11:49:14,455 basehttp "GET /admin HTTP/1.1" 301 0
+INFO 2025-03-26 11:49:14,534 basehttp "GET /admin/ HTTP/1.1" 200 22515
+INFO 2025-03-26 11:49:16,252 basehttp "GET /admin/website/config/ HTTP/1.1" 200 17119
+INFO 2025-03-26 11:49:16,285 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:49:18,625 basehttp "GET /admin/website/config/3/change/ HTTP/1.1" 200 17418
+INFO 2025-03-26 11:49:18,653 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:49:31,854 basehttp "POST /admin/website/config/3/change/ HTTP/1.1" 302 0
+INFO 2025-03-26 11:49:31,884 basehttp "GET /admin/website/config/ HTTP/1.1" 200 17681
+INFO 2025-03-26 11:49:31,977 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:49:33,727 basehttp "GET /admin/website/config/6/change/ HTTP/1.1" 200 17427
+INFO 2025-03-26 11:49:33,756 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:49:35,997 basehttp "GET /admin/website/config/ HTTP/1.1" 200 17119
+INFO 2025-03-26 11:49:36,020 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342

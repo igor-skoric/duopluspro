@@ -8,13 +8,18 @@
           <a href="#"><img src="{% static 'img/logo2.png' %}" alt="Logo image" class="w-64" /></a>
         </div>
         <div class="mb-6 md:mb-8">
-          <p class="mb-2 text-sm font-semibold">Address:</p>
-          <p class="mb-5 text-sm md:mb-6">
-            {{site_config.address.value}}
-          </p>
-          <p class="mb-2 text-sm font-semibold">Contact:</p>
-          <a href="tel:{{site_config.telephone1.value}}" class="block text-sm  decoration-black underline-offset-1 w-fit">{{site_config.telephone1.value}}</a>
-          <a href="mailto:{{site_config.email.value}}" class="block text-sm  decoration-black underline-offset-1 w-fit">{{site_config.email.value}}</a>
+            <div>
+                <p class="mb-2 text-sm font-semibold">Address:</p>
+                <p class="mb-5 text-sm md:mb-6">
+                    {{site_config.address.value}}
+                </p>
+            </div>
+            <div>
+                <p class="mb-2 text-sm font-semibold">Contact:</p>
+                <a href="tel:{{site_config.telephone1.value}}" class="block text-sm  decoration-black underline-offset-1 w-fit">{{site_config.telephone1.value}}</a>
+                <a href="tel:{{site_config.telephone2.value}}" class="block text-sm  decoration-black underline-offset-1 w-fit">{{site_config.telephone2.value}}</a>
+                <a href="mailto:{{site_config.email.value}}" class="block text-sm  decoration-black underline-offset-1 w-fit">{{site_config.email.value}}</a>
+            </div>
         </div>
         <div class="grid grid-flow-col grid-cols-[max-content] items-start justify-start gap-x-3">
                 <a href="{{site_config.instagram.value}}">
