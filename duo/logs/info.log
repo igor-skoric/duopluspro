@@ -22421,3 +22421,11 @@ INFO 2025-03-26 11:06:53,139 basehttp "POST /admin/website/tag/ HTTP/1.1" 200 12
 INFO 2025-03-26 11:06:53,929 basehttp "POST /admin/website/tag/ HTTP/1.1" 302 0
 INFO 2025-03-26 11:06:53,970 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16449
 INFO 2025-03-26 11:06:54,064 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:14:06,564 autoreload Watching for file changes with StatReloader
+INFO 2025-03-26 11:14:08,203 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 15954
+INFO 2025-03-26 11:14:08,394 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:14:09,765 basehttp "GET /admin/website/tag/add/ HTTP/1.1" 200 13876
+INFO 2025-03-26 11:14:09,791 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-03-26 11:14:11,420 basehttp "POST /admin/website/tag/add/ HTTP/1.1" 302 0
+INFO 2025-03-26 11:14:11,442 basehttp "GET /admin/website/tag/ HTTP/1.1" 200 16863
+INFO 2025-03-26 11:14:11,510 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
