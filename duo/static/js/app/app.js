@@ -125,7 +125,7 @@ const app = createApp({
           return res.json();
         })
         .then(responseData => {
-//          console.log(`Uspešan submit forme "${formName}"`, responseData);
+          console.log(`Uspešan submit forme "${formName}"`, responseData);
           this.fetchProjects();
           this.closeModal();
 
