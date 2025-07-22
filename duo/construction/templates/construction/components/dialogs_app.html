@@ -1,0 +1,63 @@
+{% load static %}
+
+<!-- Modal dialog PROJECT -->
+<div v-if="activeModal === 'project'"
+     class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="mx-2 bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
+
+        <!-- Close dugme -->
+        <button @click="closeModal"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+            &times;
+        </button>
+
+        <h3 class="text-lg font-semibold mb-4">Dodaj Projekat</h3>
+
+        <!-- Forma (dummy dizajn) -->
+        <form @submit.prevent="submitForm('formProject', '/construction/api/projects/')">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Naziv</label>
+                <input type="text" value="formProject.name" v-model="formProject.name"
+                       class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Klijent</label>
+                <input type="text" v-model="formProject.client" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Kontakt</label>
+                <input type="text" v-model="formProject.contact" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Status</label>
+                <select v-model="formProject.status" class="w-full mt-1 border rounded px-3 py-2 text-sm">
+                    <option value="planned">Planirano</option>
+                    <option value="active">Aktivno</option>
+                    <option value="completed">Završeno</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Datum</label>
+                <input type="date" v-model="formProject.start_date" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Opis</label>
+                <textarea v-model="formProject.note" rows="3"
+                          class="w-full mt-1 border rounded px-3 py-2 text-sm"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                    Sačuvaj
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

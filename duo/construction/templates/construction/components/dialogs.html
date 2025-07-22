@@ -1,0 +1,277 @@
+{% load static %}
+
+<!-- Modal dialog PONUDA -->
+<div v-if="activeModal === 'offer'"
+     class=" fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="mx-2 bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
+
+        <!-- Close dugme -->
+        <button @click="closeModal"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+            &times;
+        </button>
+
+        <h3 class="text-lg font-semibold mb-4">Dodaj Ponudu</h3>
+
+        <!-- Forma (dummy dizajn) -->
+        <form @submit.prevent="submitFormData('formOffer', '/construction/api/offers/')">
+            <div class="mb-4">
+
+                <label for="file_upload" class="block text-sm font-medium text-gray-700">
+                    Pošalji dokument (PDF, Word, Excel)
+                </label>
+
+                <input id="file_upload" name="file_upload" type="file" @change="handleFileUpload"
+
+                       class="w-full mt-1 border rounded px-3 py-2 text-sm" />
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Opis</label>
+                <textarea v-model="formOffer.description" rows="3"
+                          class="w-full mt-1 border rounded px-3 py-2 text-sm"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                    Sačuvaj
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Modal dialog AVANS -->
+<div v-if="activeModal === 'avans'"
+     class=" fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="mx-2 bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
+
+        <!-- Close dugme -->
+        <button @click="closeModal"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+            &times;
+        </button>
+
+        <h3 class="text-lg font-semibold mb-4">Dodaj avans</h3>
+
+        <!-- Forma (dummy dizajn) -->
+        <form @submit.prevent="submitForm('formAvans', '/construction/api/advances/')">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Datum</label>
+                <input type="date" v-model="formAvans.date" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Iznos</label>
+                <input type="number" v-model="formAvans.amount" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Način</label>
+                <select v-model="formAvans.payment" class="w-full mt-1 border rounded px-3 py-2 text-sm">
+                    <option>Keš</option>
+                    <option>Račun</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Opis</label>
+                <textarea v-model="formAvans.description" rows="3"
+                          class="w-full mt-1 border rounded px-3 py-2 text-sm"></textarea>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                    Sačuvaj
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Modal dialog MATERIALS -->
+<div v-if="activeModal === 'materials'"
+     class=" fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="mx-2 bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
+
+        <!-- Close dugme -->
+        <button @click="closeModal"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+            &times;
+        </button>
+
+        <h3 class="text-lg font-semibold mb-4">Dodaj Material</h3>
+
+        <!-- Forma (dummy dizajn) -->
+        <form @submit.prevent="submitForm('formMaterial', '/construction/api/materials/')">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Materijal</label>
+
+                <select v-model="formMaterial.type" class="w-full mt-1 border rounded px-3 py-2 text-sm">
+                    <option disabled value="">-- Odaberi tip --</option>
+                    <option v-for="type in selectedMaterialType" :key="type.id" :value="type.id">
+                        [[ type.name ]]
+                    </option>
+                </select>
+
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Količina</label>
+                <input type="number" v-model="formMaterial.quantity"
+                       class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Jedinica</label>
+
+                <select v-model="formMaterial.unit" class="w-full mt-1 border rounded px-3 py-2 text-sm">
+                    <option disabled value="">-- Odaberi tip --</option>
+                    <option v-for="unit in selectedUnits" :key="unit.id" :value="unit.id">
+                        [[ unit.name ]]
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Cena</label>
+                <input type="number" v-model="formMaterial.price" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Datum</label>
+                <input type="date" v-model="formMaterial.date" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Opis</label>
+                <textarea v-model="formMaterial.note" rows="3"
+                          class="w-full mt-1 border rounded px-3 py-2 text-sm"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                    Sačuvaj
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Modal dialog PROJECT -->
+<div v-if="activeModal === 'project'"
+     class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="mx-2 bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
+
+        <!-- Close dugme -->
+        <button @click="closeModal"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+            &times;
+        </button>
+
+        <h3 class="text-lg font-semibold mb-4">Izmeni Projekat</h3>
+
+        <!-- Forma (dummy dizajn) -->
+        <form @submit.prevent="submitForm('formProject', '/construction/api/projects/' + formProject.id + '/','PUT')">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Naziv</label>
+                <input type="text" value="formProject.name" v-model="formProject.name"
+                       class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Klijent</label>
+                <input type="text" v-model="formProject.client" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Kontakt</label>
+                <input type="text" v-model="formProject.contact" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Vrednost</label>
+                <input type="number" v-model="formProject.cost" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Status</label>
+                <select v-model="formProject.status" class="w-full mt-1 border rounded px-3 py-2 text-sm">
+                    <option value="planned">Planirano</option>
+                    <option value="active">Aktivno</option>
+                    <option value="completed">Završeno</option>
+                </select>
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Datum početka</label>
+                <input type="date" v-model="formProject.start_date" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Datum završetka</label>
+                <input type="date" v-model="formProject.end_date" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                />
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Opis</label>
+                <textarea v-model="formProject.note" rows="3"
+                          class="w-full mt-1 border rounded px-3 py-2 text-sm"></textarea>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                    Sačuvaj
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!-- Modal dialog RADNICI -->
+<div v-if="activeModal === 'workers'"
+     class=" fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="mx-2 bg-white w-full max-w-md rounded-lg shadow-lg p-6 relative">
+
+        <!-- Close dugme -->
+        <button @click="closeModal"
+                class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold">
+            &times;
+        </button>
+
+        <h3 class="text-lg font-semibold mb-4">Dodaj Radnika</h3>
+
+        <!-- Forma (dummy dizajn) -->
+        <form @submit.prevent="submitForm('formWorker', '/construction/api/workers/')">
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Ime</label>
+                <input type="text" v-model="formWorker.name" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Pozicija</label>
+                <input type="text" v-model="formWorker.position" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Cena</label>
+                <input type="number" v-model="formWorker.cost" class="w-full mt-1 border rounded px-3 py-2 text-sm"
+                       required/>
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm">
+                    Sačuvaj
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

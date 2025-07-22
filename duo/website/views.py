@@ -18,8 +18,8 @@ def home(request):
 
 def projects(request):
     projects = Project.objects.all()
-
-    context = {'projects': projects}
+    hide_header_footer = True
+    context = {'projects': projects, 'hide_header_footer': hide_header_footer}
     return render(request, 'website/pages/projects.html', context)
 
 

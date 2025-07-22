@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   const menu = document.getElementById('mobileMenu');
   const contact = document.getElementById('contact');
   const toggleButton = document.getElementById('toggleMenu');
@@ -19,9 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.classList.add('max-h-0');
         menu.classList.remove('max-h-[500px]');
         if (contact === "" || contact === null || contact === undefined) {
-            console.log('contact');
-            console.log(contact);
-            console.log("Contact is empty");
+
         } else {
             // The contact is not empty
             contact.classList.toggle('-translate-y-36');
@@ -29,18 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
   });
-
-    document.querySelector('.scroll-to-top').addEventListener('click', function (e) {
-        e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-
-
-
-
-
 
 });

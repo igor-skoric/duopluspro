@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Index jeah{% endblock %}
+
+{% block content %}
+
+<div id="app">
+    <div class="container bg-gray-100 p-4 lg:mt-10 rounded-xl shadow-xl">
+        <div class="flex justify-between my-4">
+            <button
+                    @click="goToPrevPage"
+                    :disabled="!prevPage"
+                    class="bg-gray-200 px-4 py-2 rounded "
+            >
+                Prethodna
+            </button>
+
+            <span class="text-sm mt-2">Strana: [[ currentPage ]]</span>
+
+            <button
+                    @click="goToNextPage"
+                    :disabled="!nextPage"
+                    class="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
+            >
+                Sledeća
+            </button>
+        </div>
+
+
+        <div class="">
+
+            <input
+                    v-model="searchQuery"
+                    type="text"
+                    placeholder="Pretraga po imenu ili klijentu..."
+                    class="mb-2 w-full px-4 py-2 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-150"
+            />
+            <div class="flex justify-end">
+                <div class="flex gap-2">
+                    <div class="relative group">
+                        <button @click="fetchProjects(currentPage)"
+                                class="bg-gray-600 text-white px-1 py-1 rounded hover:bg-gray-700 text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+                            </svg>
+                        </button>
+
+                        <!-- Tooltip -->
+                        <div class="hidden md:flex absolute bottom-full mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                            Osveži projekte
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button @click.stop="openModal('project')"
+                                class="bg-gray-600 text-white px-3 py-2 rounded hover:bg-gray-700 text-sm">
+                            +
+                        </button>
+
+                        <!-- Tooltip -->
+                        <div class="hidden md:flex absolute -left-10 bottom-full mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                            Dodaj novi projekat
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Projekat kartica -->
+        <div class="flex flex-col gap-5">
+
+            <!-- Jedna kartica projekta -->
+
+            <a v-for="project in projects"
+               :key="project.id"
+               :href="'/construction/single_project/' + project.id"
+               class="inline-block font-medium">
+
+                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition">
+                    <h2 class="text-lg font-semibold text-gray-800">[[ project.name ]]</h2>
+                    <div class="text-blue-600  bg-gray">
+                        [[project.note]]
+                    </div>
+                    <br>
+                    <p class="text-sm text-gray-600">
+                        [[ project.client ]] - [[ project.contact ]]
+                    </p>
+                    <div class="flex justify-between items-center ">
+                        <p class="text-sm text-gray-600">
+                            [[ formatDate(project.start_date) ]] - [[ formatDate(project.end_date) ]]
+                        </p>
+                        <span :class="'text-sm px-2 py-1  rounded-full ' + statusClass(project.status)">[[ project.status_display ]]</span>
+                    </div>
+
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+    {% include 'construction/components/dialogs_app.html' %}
+</div>
+
+
+<script src="{% static 'js/app/app.js' %}"></script>
+
+{% endblock %}
+

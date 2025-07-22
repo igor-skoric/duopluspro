@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}App{% endblock %}
+
+{% block content %}
+
+<div id="single_project">
+    <div class="container bg-gray-100 p-4 rounded-xl shadow-xl lg:mt-10">
+        <div class=" ">
+            <a href="{% url 'app' %}" class="flex gap-2 p-3 ">
+                    <span class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                        </svg>
+                    </span>
+                Nazad</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
+            <div class="bg-white rounded-lg shadow-lg  p-6 relative">
+                <div class="space-y-4 pt-4">
+                    <h2 class="text-xl font-bold text-gray-800">[[ project.name ]]</h2>
+                    <div class="flex gap-5">
+                        <p class="text-gray-600 font-medium">[[ project.client ]]</p>
+                        <p class="text-gray-600 font-medium">[[ project.contact ]]</p>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        [[project.note]]
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <p :class="'text-sm px-2 py-1 rounded-full ' + statusClass(project.status)">
+                            [[project.status_display]]</p>
+                        <div class="">
+                            <button @click.stop="openModal('project')"
+                                    class="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-lg ">
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">Zarada i Trošak</h3>
+
+                <!--Bruto:-->
+                <div class="flex items-center justify-between text-gray-600 mb-2 border-b">
+                    <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 17l6-6 4 4 8-8"/>
+                    </svg>
+
+                    Bruto:
+                </span>
+                    <span @click="showBruto = !showBruto" class="font-medium cursor-pointer">[[ showBruto ? (project.cost + ' RSD') : '••••••' ]]</span>
+                </div>
+
+                <!--                Materijal:-->
+                <div class="flex items-center justify-between text-gray-600 mb-2">
+                    <span class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21V3m0 0L5 7m4-4l4 4"/>
+                    </svg>
+                    Materijal:
+                </span>
+                    <span class="font-medium">[[ project.total_material_cost ]] RSD</span>
+                </div>
+
+                <!--                Radnici:-->
+                <div class="flex items-center justify-between text-gray-600 mb-2">
+                    <span class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                             class="size-5 text-blue-500">
+                          <path fill-rule="evenodd"
+                                d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                clip-rule="evenodd"/>
+                        </svg>
+                        Radnici:
+                    </span>
+                    <span class="font-medium">[[ project.total_workers_cost ]] RSD</span>
+                </div>
+
+                <div class="flex justify-end text-gray-800 border-b">
+                    <span class="font-bold text-red-600">[[ project.total_cost ]] RSD</span>
+                </div>
+
+                <!--Neto:-->
+                <div class="flex items-center justify-between text-gray-600 mb-2 ">
+                    <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h4l3-3 4 4 4-4 2 2M12 20V4"/>
+                    </svg>
+
+                    Neto:
+                </span>
+                    <span @click="showProfit = !showProfit" class="font-medium cursor-pointer">[[ showProfit ? (project.total_profit + ' RSD') : '••••••' ]]</span>
+                </div>
+
+            </div>
+        </div>
+
+        <br>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Sekcije -->
+            <div v-for="section in sectionList" :key="section.key" class="">
+                <div @click="toggleSection(section.key)"
+                     class="bg-white rounded-lg shadow cursor-pointer px-4 py-3 flex justify-between items-center transition-all">
+                    <div class="flex gap-2">
+                        <span v-if="section.key === 'offer'">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none"
+                                       viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round"
+                                                                                       stroke-linejoin="round"
+                                                                                       stroke-width="2"
+                                                                                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v14a2 2 0 01-2 2z"/></svg></span>
+                        </span>
+                        <span v-if="section.key === 'avans'">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                                       viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round"
+                                                                                       stroke-linejoin="round"
+                                                                                       stroke-width="2"
+                                                                                       d="M12 8c-1.333 0-4 .667-4 2s2.667 2 4 2 4 .667 4 2-2.667 2-4 2m0-10v12"/></svg></span>
+                        </span>
+                        <span v-if="section.key === 'materials'">
+                            <span>
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2"
+                                     viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round"
+                                                               d="M3 10h11M9 21V3m0 0L5 7m4-4l4 4"/></svg>
+                            </span>
+                        </span>
+                        <span v-if="section.key === 'workers'">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                     class="size-5 text-blue-500"><path fill-rule="evenodd"
+                                                                        d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
+                                                                        clip-rule="evenodd"/></svg>
+                            </span>
+                        </span>
+                        <span class="font-semibold text-gray-800">[[ section.title ]]</span>
+
+                    </div>
+                    <svg :class="{ 'rotate-180': sections[section.key] }"
+                         class="w-5 h-5 transition-transform duration-300 text-gray-600"
+                         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </div>
+
+                <div v-show="sections[section.key]"
+                     :class="sections[section.key] ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'"
+                     class="mt-2 rounded-xl transform origin-top transition-all duration-300 bg-white px-2 md:px-4 py-3 rounded-b-lg shadow text-sm text-gray-700">
+
+                    <template v-if="section.key === 'offer'">
+                        <div v-if="project.offers[0]">
+                            <div v-for="offer in project.offers" :key="offer.key" class="mb-2">
+                                <div class="bg-gray-100 p-2 flex justify-between items-center gap-5">
+                                    <a :href="offer.file" class="inline-block" target="_blank">
+                                        <p>[[offer.filename]] </p>
+                                        <p v-if="offer.description != ''">[[offer.description]]</p>
+                                    </a>
+                                    <button @click.stop="deleteOffer(offer.id)"
+                                            class="bg-red-600 text-white p-2 rounded hover:bg-red-700 text-sm">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            nema podataka
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button @click.stop="openModal('offer')"
+                                    class="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm">
+                                +
+                            </button>
+                        </div>
+
+                    </template>
+
+                    <template v-else-if="section.key === 'avans'">
+                        <div v-if="project.advances[0]">
+                            <div v-for="advance in project.advances" :key="advance.key" class="mb-2">
+                                <div class="bg-gray-100 p-2 flex justify-between gap-5">
+                                    <div class="">
+                                        <p><strong>Datum</strong> [[advance.date]] </p>
+                                        <p><strong>Iznos:</strong> [[advance.amount]] ([[advance.method]])</p>
+                                        <p v-if="advance.note != ''">Opis: [[advance.note]]</p>
+                                    </div>
+                                    <button @click.stop="deleteAdvance(advance.id)"
+                                            class="bg-red-600 text-white p-2 rounded hover:bg-red-700 text-sm">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            nema podataka
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button @click.stop="openModal('avans')"
+                                    class="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm">
+                                +
+                            </button>
+                        </div>
+
+                    </template>
+
+                    <template v-else-if="section.key === 'materials'">
+                        <div v-if="project.materials[0]">
+                            <div v-for="material in project.materials" :key="material.key" class="mb-1">
+                                <div class="bg-gray-100 rounded-sm p-2 flex justify-between items-center gap-5">
+                                    <div class="flex gap-2">
+                                        <p class=" hidden lg:flex">[[material.date]] </p>
+                                        <p class="font-semibold">[[material.type_display]] </p>
+                                        <p>[[material.quantity]] </p>
+                                        <p>[[material.unit_display]] </p>
+                                        <p class="font-semibold">[[material.price]] </p>
+                                    </div>
+                                    <button @click.stop="deleteMaterial(material.id)"
+                                            class="bg-red-600 text-white p-2 rounded hover:bg-red-700 text-sm">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            nema podataka
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button @click.stop="openModal('materials')"
+                                    class="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm">
+                                +
+                            </button>
+                        </div>
+                    </template>
+
+                    <template v-else-if="section.key === 'workers'">
+                        <div v-if="project.workers[0]">
+                            <div v-for="worker in project.workers" :key="worker.key" class="mb-1">
+                                <div class="bg-gray-100 rounded-sm p-2 flex justify-between items-center gap-5">
+                                    <div class="flex gap-2">
+                                        <p class="">[[worker.name]] </p>
+                                        <p class="font-semibold">[[worker.position]] </p>
+                                        <p>[[worker.cost]] </p>
+                                    </div>
+                                    <button @click.stop="deleteWorker(worker.id)"
+                                            class="bg-red-600 text-white p-2 rounded hover:bg-red-700 text-sm">
+                                        X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            nema podataka
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <button @click.stop="openModal('workers')"
+                                    class="bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 text-sm">
+                                +
+                            </button>
+                        </div>
+                    </template>
+
+                </div>
+            </div>
+        </section>
+    </div>
+    {% include 'construction/components/dialogs.html' %}
+</div>
+
+
+<script src="{% static 'js/app/single_project.js' %}"></script>
+
+
+{% endblock %}

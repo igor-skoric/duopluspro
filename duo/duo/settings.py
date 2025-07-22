@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['duopluspro.rs', '127.0.0.1']
 INSTALLED_APPS = [
     'jazzmin',
     'website',
+    'construction',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -208,5 +210,20 @@ LOGGING = {
             "level": "INFO",  # Hvatamo i INFO i ERROR logove
             "propagate": True,
         },
+    },
+}
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "My Admin Panel",
+    "site_header": "My Admin Panel",
+    "welcome_sign": "Welcome to My Admin Panel",
+    "custom_links": {
+        "website": [{
+            "name": "Home",
+            "url": "/",
+            "icon": "fas fa-home",
+            "permissions": ["auth.view_user"]
+        }]
     },
 }
