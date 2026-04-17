@@ -1,18 +1,30 @@
-
 {% load static %}
 
-<section id="section1" class="p-5">
-    <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 p-5 max-w-[1200px] rounded-lg shadow-xl bg-white">
-        <div class="flex flex-col justify-start items-center w-auto">
-            <img src="{% static 'img/home/plakar2.webp' %}" alt="Closet" class="rounded-2xl shadow-xl opacity-0 slide-in-left-fast-on-scroll"/><br>
-            <h1 class="text-center font-bold opacity-0 slide-in-left-medium-on-scroll">Nameštaj</h1>
-            <p class="text-center max-w-[500px] text-xl opacity-0 slide-in-left-slow-on-scroll">Izrađujemo nameštaj po meri, uključujući plakare, kuhinje, komode i druge komade nameštaja koji se savršeno uklapaju u vaš prostor. Naš tim koristi visokokvalitetne materijale i posvećenost detaljima kako bi svaki komad bio funkcionalan i estetski savršen. Pružamo personalizovana rešenja koja odgovaraju vašim potrebama i stilu života.</p>
-        </div>
-        <div class="flex flex-col justify-start items-center w-auto">
-            <img src="{% static 'img/home/renovation.webp' %}" alt="Renovation" class=" rounded-2xl shadow-xl opacity-0 slide-in-right-fast-on-scroll"/><br>
-            <h1 class="text-center font-bold opacity-0 slide-in-right-medium-on-scroll">Adaptacija</h1>
-            <p class="text-center max-w-[500px] text-xl opacity-0 slide-in-right-slow-on-scroll">Nudimo kompletnu adaptaciju stanova i poslovnih objekata, prilagođenu vašim potrebama i željama. Naš tim stručnjaka brine o svim detaljima, od renoviranja do modernizacije, kako bi vaš prostor bio funkcionalan i estetski savršen. Bilo da se radi o domu ili poslovnom prostoru, pružamo kvalitetna rešenja koja omogućavaju maksimalnu iskoristivost i udobnost.</p>
-        </div>
+<section class="relative z-10 px-4 pb-16 pt-4 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24" aria-label="Nameštaj i adaptacija">
+    <div
+        class="mx-auto grid max-w-6xl gap-10 rounded-3xl border border-stone-200/80 bg-white/95 p-6 shadow-xl shadow-stone-900/5 backdrop-blur-sm sm:p-8 lg:grid-cols-2 lg:gap-14 lg:p-12">
+        <article class="flex flex-col items-center text-center lg:items-stretch lg:text-left">
+            <img src="{% static 'img/home/plakar2.webp' %}" alt="Plakar po meri"
+                class="w-full max-w-md rounded-2xl object-cover shadow-lg ring-1 ring-stone-200/60 opacity-0 slide-in-left-fast-on-scroll" />
+            <h2 class="mt-8 font-serif text-3xl font-bold text-stone-900 opacity-0 slide-in-left-medium-on-scroll sm:text-4xl">
+                Nameštaj</h2>
+            <p
+                class="mt-4 max-w-lg text-base leading-relaxed text-stone-600 opacity-0 slide-in-left-slow-on-scroll sm:text-lg">
+                Izrađujemo nameštaj po meri — plakare, kuhinje, komode i druge komade koji se savršeno uklapaju u vaš
+                prostor. Koristimo kvalitetne materijale i posvećenost detaljima da svaki komad bude funkcionalan i
+                dugotrajan.
+            </p>
+        </article>
+        <article class="flex flex-col items-center text-center lg:items-stretch lg:text-left">
+            <img src="{% static 'img/home/renovation.webp' %}" alt="Adaptacija enterijera"
+                class="w-full max-w-md rounded-2xl object-cover shadow-lg ring-1 ring-stone-200/60 opacity-0 slide-in-right-fast-on-scroll" />
+            <h2 class="mt-8 font-serif text-3xl font-bold text-stone-900 opacity-0 slide-in-right-medium-on-scroll sm:text-4xl">
+                Adaptacija</h2>
+            <p
+                class="mt-4 max-w-lg text-base leading-relaxed text-stone-600 opacity-0 slide-in-right-slow-on-scroll sm:text-lg">
+                Kompletna adaptacija stanova i poslovnih objekata, prilagođena vašim željama. Renoviranje,
+                modernizacija i logistika radova — da prostor bude funkcionalan, udoban i vizuelno ujednačen.
+            </p>
+        </article>
     </div>
 </section>
-

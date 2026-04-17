@@ -1,36 +1,32 @@
 {% load static %}
 
-
-<div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-10">
     {% for project in projects %}
-        <div>
-            <a href="{% url 'project_details' project.slug %}" class="transition hover:-translate-y-6 duration-500 ">
-                <div class="rounded-lg shadow-xl bg-white transition hover:-translate-y-6 duration-500">
-                    <img src="{{ project.main_image.url }}" alt="gips" class="object-cover rounded-t-lg"/>
-                    <div class="p-5">
-                        <h3>{{ project.title }}</h3>
-    <!--                    <p>{{ project.short_description|slice:100 }}...</p>-->
-                        {% if project.short_description|length > 100 %}
-                            <p>{{ project.short_description|slice:100 }}...</p>
-                        {% else %}
-                            <p>{{ project.short_description }}</p>
-                        {% endif %}
-                        <br>
-                        <br><br>
-                        <div>
-                            {% for tag in project.tags.all %}
-                                <span class="px-2 text-white bg-blue-200 rounded-lg">{{tag}}</span>
-                            {% endfor %}
-                        </div>
-                        <br><br>
-                        <p class="text-end">{{ project.date }}</p>
+        <article>
+            <a href="{% url 'project_details' project.slug %}"
+                class="group flex h-full flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-xl hover:shadow-stone-900/10">
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="{{ project.main_image.url }}" alt="{{ project.title }}"
+                        class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+                <div class="flex flex-1 flex-col gap-3 p-5 sm:p-6">
+                    <h3 class="font-serif text-xl font-semibold text-stone-900 group-hover:text-sky-700 sm:text-2xl">
+                        {{ project.title }}</h3>
+                    {% if project.short_description|length > 100 %}
+                        <p class="line-clamp-3 text-sm leading-relaxed text-stone-600 sm:text-base">
+                            {{ project.short_description|slice:100 }}…</p>
+                    {% else %}
+                        <p class="text-sm leading-relaxed text-stone-600 sm:text-base">{{ project.short_description }}</p>
+                    {% endif %}
+                    <div class="mt-auto flex flex-wrap gap-2 pt-2">
+                        {% for tag in project.tags.all %}
+                            <span
+                                class="rounded-full border border-sky-300/50 bg-sky-500/10 px-3 py-0.5 text-xs font-medium text-sky-800">{{ tag }}</span>
+                        {% endfor %}
                     </div>
+                    <p class="text-right text-xs text-stone-400 sm:text-sm">{{ project.date }}</p>
                 </div>
             </a>
-        </div>
+        </article>
     {% endfor %}
 </div>
-
-
-
-

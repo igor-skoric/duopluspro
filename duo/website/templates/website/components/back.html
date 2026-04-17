@@ -1,6 +1,7 @@
 {% load static %}
-<div class="cursor-pointer w-fit flex gap-1" onclick="window.history.back();">
-    <img src="{% static 'img/icons/arrowleft.png' %}" alt="" class="h-6 justify-center items-center">
-    <span>Nazad</span>
-</div>
-<br>
+<button type="button"
+    class="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-800 shadow-sm transition hover:border-sky-400/60 hover:bg-sky-50 hover:text-stone-900"
+    onclick="window.history.back();">
+    <img src="{% static 'img/icons/arrowleft.png' %}" alt="" class="h-4 w-4 opacity-80" width="16" height="16" />
+    Nazad
+</button>

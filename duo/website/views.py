@@ -3,10 +3,26 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from smtplib import SMTPException
 from django.core.mail import send_mail
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 import logging
 
 logger = logging.getLogger(__name__)
+
+
+def robots_txt(request):
+    sitemap_url = request.build_absolute_uri("/sitemap.xml")
+    body = "\n".join(
+        [
+            "User-agent: *",
+            "Disallow: /admin/",
+            "Disallow: /construction/",
+            "Disallow: /website/message/",
+            "Disallow: /__reload__/",
+            "",
+            f"Sitemap: {sitemap_url}",
+        ]
+    )
+    return HttpResponse(body, content_type="text/plain; charset=utf-8")
 
 
 def home(request):
@@ -18,14 +34,18 @@ def home(request):
 
 def projects(request):
     projects = Project.objects.all()
-    hide_header_footer = True
-    context = {'projects': projects, 'hide_header_footer': hide_header_footer}
+    context = {'projects': projects}
     return render(request, 'website/pages/projects.html', context)
 
 
 def project_details(request, slug):
     project = get_object_or_404(Project, slug=slug)
-    return render(request, 'website/pages/project_details.html', {'project': project})
+    other_projects = Project.objects.exclude(pk=project.pk)[:9]
+    return render(
+        request,
+        'website/pages/project_details.html',
+        {'project': project, 'projects': other_projects},
+    )
 
 
 def contact(request):

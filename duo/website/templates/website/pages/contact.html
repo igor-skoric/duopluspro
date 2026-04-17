@@ -1,113 +1,136 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block title %}Contact{% endblock %}
+{% block title %}Kontakt | DuoPlusPro{% endblock %}
+{% block og_title %}Kontakt | DuoPlusPro{% endblock %}
+{% block twitter_title %}Kontakt | DuoPlusPro{% endblock %}
+{% block meta_description %}
+Kontaktirajte DuoPlusPro za ponudu nameštaja po meri ili adaptacije stana: telefon, e-mail i obrazac za poruku. Odgovaramo u najkraćem roku.
+{% endblock %}
+{% block og_description %}
+Kontaktirajte DuoPlusPro za ponudu nameštaja po meri ili adaptacije stana. Telefon, e-mail i kontakt forma.
+{% endblock %}
+{% block twitter_description %}
+Kontaktirajte DuoPlusPro za ponudu nameštaja po meri ili adaptacije stana.
+{% endblock %}
+{% block meta_keywords %}
+kontakt DuoPlusPro, ponuda nameštaja, adaptacija stana kontakt, Beograd
+{% endblock %}
 
 {% block content %}
 
+<main class="font-sans text-stone-800 antialiased">
 
     {% include 'website/components/hero.html' %}
 
-
-    <div id="contact" class="absolute top-1/2 w-full lg:w-auto lg:left-1/2 transform lg:-translate-x-1/2 -translate-y-36 lg:-translate-y-72 flex flex-col lg:flex-row gap-16 p-5 duration-500">
-        <div class="flex gap-10 justify-center flex-col shadow-xl rounded-lg p-5">
-            <!-- Telefon1 -->
-            <a href="tel:{{site_config.telephone1.value}}">
-                <div class="flex gap-5 items-center bg-white rounded-xl p-5 lg:px-20 lg:py-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-in-left-medium-on-scroll">
-                    <div class="w-12 md:w-16">
-                        <img src="{% static 'img/icons/solar_phone-outline.png' %}" alt="" />
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <div class="font-semibold">Telefon</div>
-                        <div>{{site_config.telephone1.value}}</div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Telefon2 -->
-            <a href="tel:{{site_config.telephone2.value}}">
-                <div class="flex gap-5 items-center bg-white rounded-xl p-5 lg:px-20 lg:py-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-in-left-medium-on-scroll">
-                    <div class="w-12 md:w-16">
-                        <img src="{% static 'img/icons/solar_phone-outline.png' %}" alt="" />
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <div class="font-semibold">Telefon</div>
-                        <div>{{site_config.telephone2.value}}</div>
-                    </div>
-                </div>
-            </a>
-            <!-- Emai -->
-            <a href="mailto:{{site_config.email.value}}">
-                <div class="flex gap-5 items-center bg-white rounded-xl p-5 lg:px-20 lg:py-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-in-left-slow-on-scroll">
-                    <div class="w-12 md:w-16">
-                        <img src="{% static 'img/icons/email.png' %}" alt="" />
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <div class="font-semibold">Email</div>
-                        <div>{{site_config.email.value}}</div>
-                    </div>
-                </div>
-            </a>
-
-            <div class="flex gap-2 md:gap-5 justify-center">
-                <a href="{{site_config.instagram.value}}">
-                    <div class="flex gap-5 items-center bg-white rounded-xl p-5  shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-up-fast-on-scroll">
-                        <div class="w-10">
-                            <img src="{% static 'img/icons/instagram.png' %}" alt="" />
-                        </div>
-                    </div>
-                </a>
-                <a href="whatsapp://send?phone={{site_config.whatsapp_no.value}}">
-                    <div class="flex gap-5 items-center bg-white rounded-xl p-5  shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-up-medium-on-scroll">
-                        <div class="w-10">
-                            <img src="{% static 'img/icons/whatsapp.png' %}" alt="" />
-                        </div>
-                    </div>
-                </a>
-                <a href="viber://chat/?number={{site_config.viber_no.value}}">
-                    <div class="flex gap-5 items-center bg-white rounded-xl p-5 shadow-xl transition hover:-translate-y-6 duration-500 opacity-0 slide-up-slow-on-scroll">
-                        <div class="w-10">
-                            <img src="{% static 'img/icons/viber.png' %}" alt="" />
-                        </div>
-                    </div>
-                </a>
+    <div id="contact"
+        class="relative z-10 -mt-6 rounded-t-[1.75rem] border-t border-stone-200/60 bg-gradient-to-b from-stone-100/95 via-stone-50 to-stone-100/90 px-4 pb-16 pt-6 shadow-[0_-8px_32px_rgba(0,0,0,0.06)] backdrop-blur-sm transition duration-500 sm:-mt-8 sm:px-6 sm:pt-8 lg:-mt-10 lg:rounded-t-[2rem] lg:px-8 lg:pb-24 lg:pt-10">
+        <div class="mx-auto max-w-6xl">
+            <div class="mb-8 text-center lg:mb-10 lg:text-left">
+                <p
+                    class="mb-3 inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-sky-600 shadow-sm">
+                    Kontakt
+                </p>
+                <h2 class="font-serif text-2xl font-bold text-stone-900 sm:text-3xl lg:text-4xl">Podaci i forma</h2>
+                <p class="mx-auto mt-2 max-w-2xl text-base text-stone-600 lg:mx-0 sm:text-lg">
+                    Izaberite način komunikacije koji vam najviše odgovara.
+                </p>
             </div>
-        </div>
-        <div class="flex justify-center items-center shadow-xl rounded-lg p-2 md:p-5 ">
-            <div class="bg-white p-5 md:p-8 rounded-lg shadow-lg w-[500px] transition hover:-translate-y-6 duration-500 opacity-0 slide-in-right-medium-on-scroll">
-                <h2 class="text-2xl font-semibold mb-6 text-center">Postavite nam pitanje</h2>
-                <p class="text-center">U najkrаćem mogućem roku ćemo vas kontaktirati</p> <br>
-                <form action="{% url 'message' %}" method="POST" class="">
-                    {% csrf_token %}
-                    <!-- Ime -->
-                    <div class="mb-4">
-                        <label for="name" class="block text-sm font-semibold text-gray-700">Ime</label>
-                        <input type="text" id="name" name="name" required class="w-full p-3 mt-2 border border-gray-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-300" placeholder="Unesite svoje ime">
-                    </div>
 
-                    <!-- Broj telefona1 -->
-                    <div class="mb-4">
-                        <label for="phone" class="block text-sm font-semibold text-gray-700">Broj telefona</label>
-                        <input type="tel" id="phone" name="phone" required class="w-full p-3 mt-2 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300" placeholder="Unesite broj telefona">
-                    </div>
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
+                <div class="flex flex-col gap-4">
+                    <a href="tel:{{ site_config.telephone1.value }}"
+                        class="group flex gap-5 rounded-2xl border border-stone-200/80 bg-white p-5 shadow-md shadow-stone-900/5 transition hover:-translate-y-0.5 hover:border-sky-300/60 hover:shadow-lg sm:p-6">
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 sm:h-16 sm:w-16">
+                            <img src="{% static 'img/icons/solar_phone-outline.png' %}" alt=""
+                                class="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+                        </div>
+                        <div class="min-w-0 text-left">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-sky-600">Telefon</p>
+                            <p class="mt-1 text-lg font-semibold text-stone-900 sm:text-xl">{{ site_config.telephone1.value }}</p>
+                        </div>
+                    </a>
 
-                    <!-- Poruka -->
-                    <div class="mb-4">
-                        <label for="message" class="block text-sm font-semibold text-gray-700">Poruka</label>
-                        <textarea id="message" name="message" required rows="4" class="w-full p-3 mt-2 border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300" placeholder="Unesite vašu poruku"></textarea>
-                    </div>
+                    <a href="tel:{{ site_config.telephone2.value }}"
+                        class="group flex gap-5 rounded-2xl border border-stone-200/80 bg-white p-5 shadow-md shadow-stone-900/5 transition hover:-translate-y-0.5 hover:border-sky-300/60 hover:shadow-lg sm:p-6">
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 sm:h-16 sm:w-16">
+                            <img src="{% static 'img/icons/solar_phone-outline.png' %}" alt=""
+                                class="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+                        </div>
+                        <div class="min-w-0 text-left">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-sky-600">Telefon</p>
+                            <p class="mt-1 text-lg font-semibold text-stone-900 sm:text-xl">{{ site_config.telephone2.value }}</p>
+                        </div>
+                    </a>
 
-                    <!-- Submit dugme -->
-                    <div class="mb-4">
-                        <button type="submit" class="w-full bg-[#DD6DBA] text-white p-3 rounded-lg hover:bg-pink-200 focus:outline-none focus:ring-2 focus:ring-blue-500">Pošaljite</button>
+                    <a href="mailto:{{ site_config.email.value }}"
+                        class="group flex gap-5 rounded-2xl border border-stone-200/80 bg-white p-5 shadow-md shadow-stone-900/5 transition hover:-translate-y-0.5 hover:border-sky-300/60 hover:shadow-lg sm:p-6">
+                        <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-500/10 sm:h-16 sm:w-16">
+                            <img src="{% static 'img/icons/email.png' %}" alt=""
+                                class="h-8 w-8 object-contain sm:h-9 sm:w-9" />
+                        </div>
+                        <div class="min-w-0 text-left">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-sky-600">Email</p>
+                            <p class="mt-1 break-all text-lg font-semibold text-stone-900 sm:text-xl">{{ site_config.email.value }}</p>
+                        </div>
+                    </a>
+
+                    <div class="flex flex-wrap justify-center gap-3 pt-1 sm:justify-start lg:pt-2">
+                        <a href="{{ site_config.instagram.value }}" target="_blank" rel="noopener noreferrer"
+                            class="flex h-14 w-14 items-center justify-center rounded-2xl border border-stone-200/80 bg-white shadow-md transition hover:border-sky-300/70 hover:shadow-lg"
+                            aria-label="Instagram">
+                            <img src="{% static 'img/icons/instagram.png' %}" alt="" class="h-8 w-8 object-contain" />
+                        </a>
+                        <a href="whatsapp://send?phone={{ site_config.whatsapp_no.value }}"
+                            class="flex h-14 w-14 items-center justify-center rounded-2xl border border-stone-200/80 bg-white shadow-md transition hover:border-sky-300/70 hover:shadow-lg"
+                            aria-label="WhatsApp">
+                            <img src="{% static 'img/icons/whatsapp.png' %}" alt="" class="h-8 w-8 object-contain" />
+                        </a>
+                        <a href="viber://chat/?number={{ site_config.viber_no.value }}"
+                            class="flex h-14 w-14 items-center justify-center rounded-2xl border border-stone-200/80 bg-white shadow-md transition hover:border-sky-300/70 hover:shadow-lg"
+                            aria-label="Viber">
+                            <img src="{% static 'img/icons/viber.png' %}" alt="" class="h-8 w-8 object-contain" />
+                        </a>
                     </div>
-                </form>
+                </div>
+
+                <div class="rounded-2xl border border-stone-200/80 bg-white p-6 shadow-xl shadow-stone-900/5 sm:p-8 lg:p-10">
+                    <h2 class="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">Postavite nam pitanje</h2>
+                    <p class="mt-2 text-center text-sm text-stone-600 sm:text-base lg:text-left">
+                        U najkraćem mogućem roku ćemo vas kontaktirati.
+                    </p>
+
+                    <form action="{% url 'message' %}" method="post" class="mt-8 space-y-5">
+                        {% csrf_token %}
+                        <div>
+                            <label for="name" class="mb-1.5 block text-sm font-semibold text-stone-700">Ime</label>
+                            <input type="text" id="name" name="name" required autocomplete="name"
+                                class="mt-1 w-full rounded-xl border border-stone-200 bg-stone-50/80 px-4 py-3 text-stone-900 shadow-sm transition placeholder:text-stone-400 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/30"
+                                placeholder="Unesite svoje ime">
+                        </div>
+                        <div>
+                            <label for="phone" class="mb-1.5 block text-sm font-semibold text-stone-700">Broj telefona</label>
+                            <input type="tel" id="phone" name="phone" required autocomplete="tel"
+                                class="mt-1 w-full rounded-xl border border-stone-200 bg-stone-50/80 px-4 py-3 text-stone-900 shadow-sm transition placeholder:text-stone-400 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/30"
+                                placeholder="Unesite broj telefona">
+                        </div>
+                        <div>
+                            <label for="message" class="mb-1.5 block text-sm font-semibold text-stone-700">Poruka</label>
+                            <textarea id="message" name="message" required rows="4"
+                                class="mt-1 w-full resize-y rounded-xl border border-stone-200 bg-stone-50/80 px-4 py-3 text-stone-900 shadow-sm transition placeholder:text-stone-400 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/30"
+                                placeholder="Unesite vašu poruku"></textarea>
+                        </div>
+                        <div class="pt-2">
+                            <button type="submit"
+                                class="w-full rounded-xl bg-sky-600 px-4 py-3.5 text-sm font-semibold text-white shadow-lg shadow-sky-600/25 transition hover:bg-sky-500 hover:shadow-xl hover:shadow-sky-500/30 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 sm:text-base">
+                                Pošaljite
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="mt-[750px] lg:mt-[100px] xl:mt-[50px]"></div>
-
-
+</main>
 
 {% endblock %}
-

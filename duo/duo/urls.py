@@ -1,9 +1,15 @@
 from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from website.sitemap import sitemaps
+from website.views import robots_txt
+
 urlpatterns = [
+    path("robots.txt", robots_txt),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
     path('construction/', include('construction.urls')),

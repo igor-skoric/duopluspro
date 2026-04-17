@@ -2,45 +2,82 @@
 {% load static tailwind_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sr" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {% tailwind_css %}
-    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png" class="h-6">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap"
-          rel="stylesheet">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <meta name="format-detection" content="telephone=yes">
 
-    <!-- Meta Tagovi za SEO -->
+    <title>{% block title %}DuoPlusPro — nameštaj po meri i adaptacija stanova{% endblock %}</title>
+
     <meta name="description"
-          content="Izrada nameštaja po meri za kuhinje, plakare, komode, fioke i druge komade nameštaja. Pružamo usluge adaptacije stanova, građevinskih radova, rušenja, struje, vode, podova i zamene instalacija.">
+        content="{% block meta_description %}{{ seo_default_description }}{% endblock %}">
     <meta name="keywords"
-          content="izrada nameštaja po meri, kuhinje po meri, plakari po meri, komode, fioke, adaptacija stanova, građevinski radovi, rušenje, struja, voda, podovi, zamena instalacija, renoviranje stanova, plocice">
+        content="{% block meta_keywords %}nameštaj po meri, kuhinja po meri, plakar po meri, adaptacija stanova, renoviranje, građevinski radovi, enterijer, DuoPlusPro{% endblock %}">
+    <meta name="author" content="DuoPlusPro">
+    {% block meta_robots %}
     <meta name="robots" content="index, follow">
+    {% endblock %}
 
-    <meta property="og:title" content="Izrada Nameštaja i Adaptacija Stanova - Projekti Po Meri">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <meta property="og:site_name" content="DuoPlusPro">
+    <meta property="og:locale" content="sr_RS">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}DuoPlusPro — nameštaj po meri i adaptacija stanova{% endblock %}">
     <meta property="og:description"
-          content="Specijalizovani smo za izradu nameštaja po meri (kuhinje, plakari, komode, fioke) i adaptaciju stanova, sa uslugama kao što su rušenje, struja, voda, podovi i zamena instalacija.">
-    <meta property="og:url" content="https://www.duopluspro.rs">
-    <meta property="og:image" content="https://www.duopluspro.com{% static 'img/thumbnail.png' %}">
-    <meta property="og:type" content="website">
+        content="{% block og_description %}{{ seo_default_description }}{% endblock %}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:image" content="{% block og_image %}{{ site_origin }}{% static 'img/thumbnail.png' %}{% endblock %}">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Izrada Nameštaja i Adaptacija Stanova - Projekti Po Meri">
+    <meta name="twitter:title" content="{% block twitter_title %}DuoPlusPro — nameštaj po meri i adaptacija stanova{% endblock %}">
     <meta name="twitter:description"
-          content="Pružamo usluge izrade nameštaja po meri i adaptacije stanova. Renovirajte svoj prostor sa našim profesionalnim građevinskim radovima i uslugama.">
-    <meta name="twitter:image" content="https://www.duopluspro.com{% static 'img/thumbnail.png' %}">
+        content="{% block twitter_description %}{{ seo_default_description }}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ site_origin }}{% static 'img/thumbnail.png' %}{% endblock %}">
 
+    {% tailwind_css %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
+    <link rel="apple-touch-icon" href="{% static 'img/logo.png' %}">
+    <meta name="theme-color" content="#0c4a6e">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "DuoPlusPro",
+  "url": "{{ site_origin }}/",
+  "description": "{{ seo_default_description|escapejs }}",
+  "image": "{{ site_origin }}{% static 'img/thumbnail.png' %}"
+  {% if site_config.telephone1 %},
+  "telephone": "{{ site_config.telephone1.value|escapejs }}"
+  {% endif %}
+  {% if site_config.email %},
+  "email": "{{ site_config.email.value|escapejs }}"
+  {% endif %}
+  {% if site_config.address %},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ site_config.address.value|escapejs }}"
+  }
+  {% endif %}
+}
+    </script>
+
+    {% block structured_data %}{% endblock %}
 </head>
 
 
 <!-- Postaviti klasu overflow-x-hidden-->
 
-<body class=" bg-cover bg-no-repeat bg-center bg-fixed" style="background-image: url('{% static 'img/bg1.webp' %}');">
+<body
+    class="relative min-h-screen text-stone-900 antialiased bg-gradient-to-b from-stone-200 via-stone-50 to-sky-50/35 md:bg-gradient-to-br md:from-stone-200 md:via-stone-100 md:to-sky-100/40">
 <!--<body>-->
 <!-- Ikonica koja vodi na početak -->
 
@@ -99,5 +136,4 @@
 </body>
 
 </html>
-
 

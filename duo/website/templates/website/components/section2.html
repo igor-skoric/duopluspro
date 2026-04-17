@@ -1,35 +1,49 @@
-
 {% load static %}
 
-<section id="section2" class="p-5 ">
-    <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 p-2 max-w-[1200px] rounded-lg shadow-xl ">
-        <div class="flex flex-col justify-center items-center w-auto opacity-0 slide-in-left-fast-on-scroll">
-            <img src="{% static 'img/home/kuhinja.webp' %}" alt="Kitchen" class=" rounded-2xl shadow-xl"/>
+<div id="section2" class="space-y-20 sm:space-y-24 lg:space-y-28">
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div class="order-2 opacity-0 slide-in-left-fast-on-scroll lg:order-1">
+            <img src="{% static 'img/home/kuhinja.webp' %}" alt="Kuhinja po meri"
+                class="w-full rounded-2xl object-cover shadow-xl ring-1 ring-stone-200/60" />
         </div>
-        <div class="flex flex-col gap-10 w-auto pr-8 md:pr-64 lg:pr-32 bg-white rounded-xl p-2">
-            <p class="opacity-0 slide-in-right-fast-on-scroll">Kuhinje</p>
-            <h1 class="text-6xl w-[90%] opacity-0 slide-in-right-fast-on-scroll">Izrada Kuhinja po Meri</h1>
-            <p class="text-xl opacity-0 slide-in-right-fast-on-scroll">Bilo da želite kuhinju po meri, komodu koja savršeno odgovara vašoj sobi, ili garderober koji maksimalno koristi prostor, mi pružamo visokokvalitetne usluge izrade nameštaja prema vašim potrebama.</p>
-            <p class="text-xl opacity-0 slide-in-right-fast-on-scroll">Svaki komad nameštaja dizajniramo kako bi bio funkcionalan, estetski prijatan i dugotrajan. Naš tim je posvećen stvaranju unikatnih rešenja koja se savršeno uklapaju u vaš prostor.</p>
-        </div>
+        <article
+            class="order-1 flex flex-col gap-5 rounded-2xl border border-stone-200/80 bg-white p-6 shadow-lg sm:p-8 lg:order-2 lg:p-10">
+            <p class="text-xs font-semibold uppercase tracking-widest text-sky-600 opacity-0 slide-in-right-fast-on-scroll">
+                Kuhinje</p>
+            <h2
+                class="font-serif text-3xl font-bold leading-tight text-stone-900 opacity-0 slide-in-right-fast-on-scroll sm:text-4xl md:text-5xl">
+                Izrada kuhinja po meri</h2>
+            <p class="text-base leading-relaxed text-stone-600 opacity-0 slide-in-right-fast-on-scroll sm:text-lg">
+                Kuhinja po meri, komode koje odgovaraju sobi ili garderober koji maksimalno koristi prostor — pružamo
+                visokokvalitetnu izradu prema vašim merama i željama.
+            </p>
+            <p class="text-base leading-relaxed text-stone-600 opacity-0 slide-in-right-fast-on-scroll sm:text-lg">
+                Svaki komad dizajniramo da bude funkcionalan, estetski prijatan i dugotrajan, sa jasnom komunikacijom
+                tokom celog procesa.
+            </p>
+        </article>
     </div>
 
-    <br><br><br><br><br><br>
-
-    <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 p-2 max-w-[1200px] rounded-lg shadow-xl">
-        <div class="flex flex-col justify-center items-center w-auto order-1 lg:order-2 opacity-0 slide-in-left-fast-on-scroll">
-            <img src="{% static 'img/home/plakar.webp' %}" alt="Closet" class="rounded-2xl shadow-xl"/>
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div class="opacity-0 slide-in-left-fast-on-scroll lg:order-2">
+            <img src="{% static 'img/home/plakar.webp' %}" alt="Plakar po meri"
+                class="w-full rounded-2xl object-cover shadow-xl ring-1 ring-stone-200/60" />
         </div>
-        <div class="flex flex-col gap-10 w-auto md:pl-8 md:pl-64 lg:pl-32 order-2 lg:order-1 bg-white rounded-xl p-2">
-            <p class="opacity-0 slide-in-right-fast-on-scroll">Plakari</p>
-            <h1 class="text-6xl opacity-0 slide-in-right-fast-on-scroll">Izrada Plakara po Meri</h1>
-            <p class="text-xl opacity-0 slide-in-right-fast-on-scroll">Bilo da želite kuhinju po meri, komodu koja savršeno odgovara vašoj sobi, ili garderober koji maksimalno koristi prostor, mi pružamo visokokvalitetne usluge izrade nameštaja prema vašim potrebama.</p>
-            <p class="text-xl opacity-0 slide-in-right-fast-on-scroll">Svaki komad nameštaja dizajniramo kako bi bio funkcionalan, estetski prijatan i dugotrajan. Naš tim je posvećen stvaranju unikatnih rešenja koja se savršeno uklapaju u vaš prostor.</p>
-        </div>
+        <article
+            class="flex flex-col gap-5 rounded-2xl border border-stone-200/80 bg-white p-6 shadow-lg sm:p-8 lg:order-1 lg:p-10">
+            <p class="text-xs font-semibold uppercase tracking-widest text-sky-600 opacity-0 slide-in-right-fast-on-scroll">
+                Plakari</p>
+            <h2
+                class="font-serif text-3xl font-bold leading-tight text-stone-900 opacity-0 slide-in-right-fast-on-scroll sm:text-4xl md:text-5xl">
+                Izrada plakara po meri</h2>
+            <p class="text-base leading-relaxed text-stone-600 opacity-0 slide-in-right-fast-on-scroll sm:text-lg">
+                Maksimalno iskorišćenje visine i dubine, meka zatvaranja, unutrašnja organizacija fioke i polica — sve
+                prilagođavamo navikama domaćinstva.
+            </p>
+            <p class="text-base leading-relaxed text-stone-600 opacity-0 slide-in-right-fast-on-scroll sm:text-lg">
+                Kombinujemo materijale i dekorativne obloge kako bi plakar delovao kao prirodan deo enterijera, ne kao
+                dodatak.
+            </p>
+        </article>
     </div>
-
-
-</section>
-
-
-
+</div>

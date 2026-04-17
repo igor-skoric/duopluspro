@@ -1,32 +1,38 @@
 {% load static %}
-<!--<div id="social" class="mx-auto">-->
 
-<header class="text-white fixed top-0 left-0 w-full bg-black/80 relative ">
-    <div id="header" class="z-[999] flex w-full items-center lg:min-h-18 lg:px-[10%] transition-transform duration-300">
-        <div class="mx-auto size-full lg:grid lg:grid-cols-2 lg:items-center lg:justify-between lg:gap-4">
-            <div class="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
-                {% if website %}
-                <a href="{% url 'home' %}" class="py-4">
-                    <img src="{% static 'img/logo2.png' %}" alt="Logo image" class="w-[150px] sm:w-[200px]"/>
-                </a>
-                {% endif %}
-                <div class="flex items-center gap-4 lg:hidden">
-                    <button id="toggleMenu" class="-mr-2 flex size-12 flex-col items-center justify-center lg:hidden ">
-                        <span class="my-[3px] h-0.5 w-6 bg-white"></span>
-                        <span class="my-[3px] h-0.5 w-6 bg-white"></span>
-                        <span class="my-[3px] h-0.5 w-6 bg-white"></span>
-                    </button>
+<header
+    class="fixed inset-x-0 top-0 z-[999] border-b border-white/10 bg-neutral-950/75 font-sans text-white antialiased shadow-[0_8px_32px_rgba(0,0,0,0.28)] backdrop-blur-md supports-[backdrop-filter]:bg-neutral-950/55">
+    <div id="header" class="transition-transform duration-300">
+        <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:grid lg:grid-cols-[auto_1fr] lg:items-center lg:gap-10">
+                <div
+                    class="flex min-h-16 items-center sm:min-h-[4.5rem] lg:min-h-[4.25rem] {% if website %}justify-between{% else %}justify-end{% endif %} lg:justify-start">
+                    {% if website %}
+                    <a href="{% url 'home' %}" class="flex shrink-0 items-center py-2 transition-opacity hover:opacity-90">
+                        <img src="{% static 'img/logo2.png' %}" alt="Logo image" class="h-9 w-auto sm:h-10 md:h-11" />
+                    </a>
+                    {% endif %}
+                    <div class="flex items-center lg:hidden">
+                        <button type="button" id="toggleMenu" aria-controls="mobileMenu" aria-expanded="false"
+                            aria-label="Otvori meni"
+                            class="inline-flex h-11 w-11 flex-col items-center justify-center rounded-lg border border-white/15 bg-white/5 transition hover:border-white/30 hover:bg-white/10">
+                            <span class="h-0.5 w-6 rounded-full bg-white"></span>
+                            <span class="my-[5px] h-0.5 w-6 rounded-full bg-white"></span>
+                            <span class="h-0.5 w-6 rounded-full bg-white"></span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div id="mobileMenu"
-                 class="text-xl max-h-0 overflow-hidden flex-col px-[5%] text-center lg:flex lg:max-h-none lg:flex-row lg:items-center lg:justify-end lg:px-0 transition-all duration-500 ease-in-out">
-                <a href="{% url 'home' %}"
-                   class="{% if not website %} hidden {% endif %} group block py-3 text-md lg:px-4 lg:py-2 relative pt-5 ">Početna</a>
-                <a href="{% url 'projects' %}"
-                   class="{% if not website %} hidden {% endif %} group block py-3 text-md lg:px-4 lg:py-2 relative">Projekti</a>
-                <a href="{% url 'contact' %}"
-                   class="{% if not website %} hidden {% endif %} group block py-3 text-md lg:px-4 lg:py-2 relative">Kontakt</a>
-                <a href="{% url 'app' %}" class="group block py-3 text-md lg:px-4 lg:py-2 relative">Login</a>
+                <nav id="mobileMenu" role="navigation"
+                    class="flex max-h-0 flex-col overflow-hidden border-t border-white/5 px-3 text-center transition-[max-height] duration-500 ease-in-out sm:px-4 lg:max-h-none lg:flex-row lg:items-center lg:justify-end lg:gap-0 lg:self-center lg:border-t-0 lg:overflow-visible lg:px-0 lg:pb-0 lg:text-left">
+                    <a href="{% url 'home' %}"
+                        class="{% if not website %}hidden{% endif %} block border-b border-white/5 py-3.5 text-[0.95rem] font-medium tracking-wide text-white/90 transition hover:bg-white/5 hover:text-white lg:inline-block lg:border-b-2 lg:border-transparent lg:px-4 lg:py-2 lg:pb-1.5 lg:hover:border-sky-400 lg:hover:bg-transparent">Početna</a>
+                    <a href="{% url 'projects' %}"
+                        class="{% if not website %}hidden{% endif %} block border-b border-white/5 py-3.5 text-[0.95rem] font-medium tracking-wide text-white/90 transition hover:bg-white/5 hover:text-white lg:inline-block lg:border-b-2 lg:border-transparent lg:px-4 lg:py-2 lg:pb-1.5 lg:hover:border-sky-400 lg:hover:bg-transparent">Projekti</a>
+                    <a href="{% url 'contact' %}"
+                        class="{% if not website %}hidden{% endif %} block border-b border-white/5 py-3.5 text-[0.95rem] font-medium tracking-wide text-white/90 transition hover:bg-white/5 hover:text-white lg:inline-block lg:border-b-2 lg:border-transparent lg:px-4 lg:py-2 lg:pb-1.5 lg:hover:border-sky-400 lg:hover:bg-transparent">Kontakt</a>
+                    <a href="{% url 'app' %}"
+                        class="relative mx-auto my-3 inline-flex items-center justify-center rounded-full bg-sky-600 px-7 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-600/30 transition hover:bg-sky-500 hover:shadow-xl hover:shadow-sky-500/35 lg:mx-0 lg:ml-4 lg:px-6 lg:py-2">Login</a>
+                </nav>
             </div>
         </div>
     </div>

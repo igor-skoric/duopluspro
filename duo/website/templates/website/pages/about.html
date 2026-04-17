@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block title %}Index jeah{% endblock %}
+{% block title %}O nama | DuoPlusPro{% endblock %}
+{% block og_title %}O nama | DuoPlusPro{% endblock %}
+{% block twitter_title %}O nama | DuoPlusPro{% endblock %}
+{% block meta_description %}
+DuoPlusPro se bavi izradom nameštaja po meri i adaptacijom stanova. Upoznajte naš pristup kvalitetu, rokovima i saradnji sa klijentima.
+{% endblock %}
+{% block og_description %}
+DuoPlusPro — nameštaj po meri i adaptacija stanova. O nama, usluge i iskustvo u enterijeru i građevinskim radovima.
+{% endblock %}
+{% block twitter_description %}
+DuoPlusPro — nameštaj po meri i adaptacija stanova. O nama i uslugama.
+{% endblock %}
+{% block meta_keywords %}
+DuoPlusPro, o nama, nameštaj po meri, adaptacija stanova, enterijer
+{% endblock %}
 
 {% block content %}
 
+<main class="mx-auto max-w-3xl px-4 py-24 font-sans text-stone-800 antialiased sm:px-6 sm:py-28 lg:px-8 lg:py-32">
+    <p class="text-xs font-semibold uppercase tracking-widest text-sky-600">O nama</p>
+    <h1 class="mt-3 font-serif text-3xl font-bold text-stone-900 sm:text-4xl">DuoPlusPro</h1>
+    <p class="mt-6 text-lg leading-relaxed text-stone-600">
+        Specijalizovani smo za <strong class="font-semibold text-stone-800">izradu nameštaja po meri</strong>
+        (kuhinje, plakari, komode, garderoberi) i za <strong class="font-semibold text-stone-800">kompletnu adaptaciju
+            stanova</strong> — od demontaže i građevinskih radova do završne obrade i ugradnje instalacija.
+    </p>
+    <p class="mt-4 leading-relaxed text-stone-600">
+        Radimo planiranje prostora, izbor materijala i koordinaciju radova tako da dobijete funkcionalan enterijer
+        prilagođen vašem budžetu i roku. Kontakt i reference nalaze se na početnoj strani i u galeriji projekata.
+    </p>
+</main>
 
 {% endblock %}
-

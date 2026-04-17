@@ -1,38 +1,148 @@
 {% load static %}
 
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-6">
-        <!-- Slika 1 -->
+<div class="gallery-root" data-gallery-root>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {% for image in images %}
-            <div class="relative w-full aspect-w-16 aspect-h-9">
-                <img src="{{image.image.url}}" alt="Slika 1" class="w-full h-full object-cover cursor-pointer rounded-xl" onclick="openModal('{{image.image.url}}')">
-            </div>
+            <button type="button" data-gallery-thumb data-src="{{ image.image.url }}"
+                class="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-stone-200/80 bg-stone-100 shadow-md ring-1 ring-stone-200/40 transition hover:border-sky-300/60 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-sky-400/40">
+                <img src="{{ image.image.url }}" alt="Fotografija projekta {{ forloop.counter }}"
+                    class="pointer-events-none h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy" />
+            </button>
         {% endfor %}
-
-
-        <!-- Dodaj više slika po potrebi -->
     </div>
 
-    <!-- Modal za prikaz slike u većem formatu -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
-        <div class="relative max-w-full max-h-full p-4">
-            <button onclick="closeModal()" class="absolute top-4 right-6 text-white text-3xl">&times;</button>
-            <img id="modal-image" src="" alt="" class="max-w-full max-h-screen object-contain">
+    <div data-gallery-lightbox
+        class="fixed inset-0 z-[1000] hidden flex-col bg-black/85 backdrop-blur-sm"
+        role="dialog" aria-modal="true" aria-label="Galerija fotografija projekta" hidden>
+        <div class="flex shrink-0 items-center justify-between gap-4 border-b border-white/10 px-4 py-3 sm:px-6">
+            <p class="text-sm font-medium text-white/90">
+                Galerija — <span data-gallery-counter>1 / 1</span>
+            </p>
+            <button type="button" data-gallery-close
+                class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-2xl leading-none text-white transition hover:bg-white/20"
+                aria-label="Zatvori">&times;</button>
+        </div>
+
+        <div data-gallery-stage
+            class="relative flex min-h-0 flex-1 items-center justify-center px-2 py-4 sm:px-4 sm:py-6">
+            <button type="button" data-gallery-prev
+                class="absolute left-1 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl font-light text-white shadow-lg backdrop-blur-sm transition hover:bg-white/25 sm:left-3 sm:h-12 sm:w-12 sm:text-3xl"
+                aria-label="Prethodna fotografija">‹</button>
+
+            <div
+                class="flex max-h-full max-w-[min(100vw-5rem,1200px)] cursor-default items-center justify-center px-10 sm:px-14">
+                <img data-gallery-main src="" alt="Izabrana fotografija projekta"
+                    class="max-h-[calc(100dvh-10rem)] max-w-full rounded-lg object-contain shadow-2xl" />
+            </div>
+
+            <button type="button" data-gallery-next
+                class="absolute right-1 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-2xl font-light text-white shadow-lg backdrop-blur-sm transition hover:bg-white/25 sm:right-3 sm:h-12 sm:w-12 sm:text-3xl"
+                aria-label="Sledeća fotografija">›</button>
         </div>
     </div>
+</div>
 
-    <script>
-        // Funkcija za otvaranje modala sa većom slikom
-        function openModal(imageSrc) {
-            const modal = document.getElementById('modal');
-            const modalImage = document.getElementById('modal-image');
-            modalImage.src = imageSrc;
-            modal.classList.remove('hidden');
+<script>
+    (function () {
+        function initGallery(root) {
+            if (root.dataset.galleryInited === '1') return;
+            root.dataset.galleryInited = '1';
+
+            const thumbs = Array.from(root.querySelectorAll('[data-gallery-thumb]'));
+            if (!thumbs.length) return;
+
+            const sources = thumbs.map(function (btn) {
+                return btn.getAttribute('data-src') || '';
+            }).filter(Boolean);
+            if (!sources.length) return;
+
+            const lightbox = root.querySelector('[data-gallery-lightbox]');
+            const mainImg = root.querySelector('[data-gallery-main]');
+            const counterEl = root.querySelector('[data-gallery-counter]');
+            const btnPrev = root.querySelector('[data-gallery-prev]');
+            const btnNext = root.querySelector('[data-gallery-next]');
+            const btnClose = root.querySelector('[data-gallery-close]');
+            const stage = root.querySelector('[data-gallery-stage]');
+
+            let index = 0;
+
+            function syncCounter() {
+                if (counterEl) {
+                    counterEl.textContent = (index + 1) + ' / ' + sources.length;
+                }
+            }
+
+            function showAt(i) {
+                index = ((i % sources.length) + sources.length) % sources.length;
+                mainImg.src = sources[index];
+                mainImg.alt = 'Fotografija projekta ' + (index + 1);
+                syncCounter();
+            }
+
+            function openAt(i) {
+                showAt(i);
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                lightbox.removeAttribute('hidden');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('overflow-hidden');
+                document.addEventListener('keydown', onKeydown);
+            }
+
+            function close() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightbox.setAttribute('hidden', '');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('overflow-hidden');
+                document.removeEventListener('keydown', onKeydown);
+                mainImg.removeAttribute('src');
+            }
+
+            function onKeydown(e) {
+                if (lightbox.classList.contains('hidden')) return;
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    close();
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    showAt(index - 1);
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    showAt(index + 1);
+                }
+            }
+
+            thumbs.forEach(function (btn, i) {
+                btn.addEventListener('click', function () {
+                    openAt(i);
+                });
+            });
+
+            btnPrev.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showAt(index - 1);
+            });
+            btnNext.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showAt(index + 1);
+            });
+            btnClose.addEventListener('click', function (e) {
+                e.stopPropagation();
+                close();
+            });
+
+            lightbox.addEventListener('click', function (e) {
+                if (e.target === lightbox) close();
+            });
+            if (stage) {
+                stage.addEventListener('click', function (e) {
+                    if (e.target === stage) close();
+                });
+            }
         }
 
-        // Funkcija za zatvaranje modala
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.add('hidden');
-        }
-    </script>
+        document.querySelectorAll('[data-gallery-root]').forEach(initGallery);
+    })();
+</script>

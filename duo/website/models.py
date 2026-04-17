@@ -61,23 +61,36 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    def _assign_unique_slug(self):
+        max_len = self._meta.get_field("slug").max_length
+        raw = slugify(self.title) or "projekat"
+        base = raw[:max_len]
+        candidate = base
+        suffix = 2
+        qs = Project.objects.all()
+        if self.pk:
+            qs = qs.exclude(pk=self.pk)
+        while qs.filter(slug=candidate).exists():
+            tail = f"-{suffix}"
+            candidate = f"{raw[: max_len - len(tail)]}{tail}"
+            suffix += 1
+        self.slug = candidate[:max_len]
+
     def save(self, *args, **kwargs):
-        """ Ako postoji prethodna slika, brišemo je pre čuvanja nove. """
+        """Slug iz naslova (jedinstven); brisanje stare glavne slike pri zameni."""
+
+        self._assign_unique_slug()
 
         try:
-            if not self.slug:
-                self.slug = slugify(self.title)  # Automatski generiše slug iz naslova
-
-            # Pronalaženje prethodne verzije instance
             old_instance = Project.objects.get(pk=self.pk)
             if old_instance.main_image and old_instance.main_image != self.main_image:
                 old_path = old_instance.main_image.path
                 if os.path.isfile(old_path):
-                    os.remove(old_path)  # Brišemo staru sliku sa servera
+                    os.remove(old_path)
         except Project.DoesNotExist:
-            pass  # Ako objekat ne postoji, to znači da je novi i nema staru sliku
+            pass
 
-        super().save(*args, **kwargs)  # Čuva novu sliku u bazi
+        super().save(*args, **kwargs)
 
 
     def delete(self, *args, **kwargs):

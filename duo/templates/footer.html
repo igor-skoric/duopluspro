@@ -5,7 +5,7 @@
     <div class="grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[0.5fr_1fr] lg:gap-y-4 lg:pb-20">
       <div>
         <div class="mb-6 md:mb-8">
-          <a href="#"><img src="{% static 'img/logo2.png' %}" alt="Logo image" class="w-64" /></a>
+          <a href="{% url 'home' %}"><img src="{% static 'img/logo2.png' %}" alt="Logo image" class="w-64" /></a>
         </div>
         <div class="mb-6 md:mb-8">
             <div>
@@ -45,7 +45,7 @@
                 </a>
         </div>
       </div>
-      <div class="grid grid-col 0.\69789654123.0+-=-s-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4 items-center">
+      <div class="grid grid-cols-1 items-start gap-x-6 gap-y-10 md:grid-cols-2 md:gap-x-8 md:gap-y-4">
         <ul>
           <li class="py-2 text-2xl font-semibold">Nameštaj po meri</li>
           {% for project in furniture %}
@@ -62,8 +62,15 @@
       </div>
     </div>
     <div class="h-px w-full bg-black/10"></div>
-    <div class="flex flex-col-reverse items-start justify-between pb-4 pt-6 text-sm md:flex-row md:items-center md:pb-0 md:pt-8">
-      <p class="text-black/70 mt-8 md:mt-0">© 2025 It Branch. All rights reserved.</p>
+    <div class="flex flex-col-reverse flex-wrap items-start justify-between gap-4 pb-4 pt-6 text-sm md:flex-row md:items-center md:pb-0 md:pt-8">
+      <p class="text-black/70 mt-8 md:mt-0">
+        © {% now "Y" %} DuoPlusPro.
+      </p>
+      <p class="text-black/70">
+        Izrada sajta:
+        <a href="https://itbranch.rs/" target="_blank" rel="noopener noreferrer"
+          class="font-semibold text-sky-700 underline decoration-sky-700/30 underline-offset-2 transition hover:text-sky-600 hover:decoration-sky-600">IT.BRANCH</a>
+      </p>
     </div>
   </div>
 </footer>

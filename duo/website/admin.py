@@ -18,9 +18,10 @@ class ProjectImageInline(admin.TabularInline):
 
 # Admin za Project model
 class ProjectAdmin(admin.ModelAdmin):
+    exclude = ("slug",)
     inlines = [ProjectImageInline]
-    list_display = ['title', 'date']
-    search_fields = ['title', 'tags__name']  # Omogućava pretragu po nazivu i tagovima
+    list_display = ["title", "date"]
+    search_fields = ["title", "tags__name"]
 
 
 admin.site.register(Project, ProjectAdmin)

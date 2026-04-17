@@ -5,8 +5,10 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from .models import Project, Advance, Offer, Material, MaterialType, Unit, Worker
 from .serializers import ProjectSerializer, ProjectDetailSerializer, AdvanceSerializer, OfferSerializer, \
     MaterialSerializer, MaterialTypeSerializer, UnitSerializer, WorkerSerializer
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/admin/login/')
 def app(request):
     context = {}
     return render(request, 'construction/pages/app.html', context)

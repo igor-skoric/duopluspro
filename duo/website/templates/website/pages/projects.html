@@ -1,16 +1,44 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block title %}Projects{% endblock %}
+{% block title %}Projekti | DuoPlusPro{% endblock %}
+{% block og_title %}Projekti | DuoPlusPro{% endblock %}
+{% block twitter_title %}Projekti | DuoPlusPro{% endblock %}
+{% block meta_description %}
+Galerija realizovanih projekata — nameštaj po meri i adaptacije stanova. Pogledajte kuhinje, plakare i enterijere koje radimo za klijente DuoPlusPro.
+{% endblock %}
+{% block og_description %}
+Galerija realizovanih projekata — nameštaj po meri i adaptacije stanova. DuoPlusPro.
+{% endblock %}
+{% block twitter_description %}
+Galerija realizovanih projekata — nameštaj po meri i adaptacije stanova. DuoPlusPro.
+{% endblock %}
+{% block meta_keywords %}
+projekti nameštaja, galerija radova, adaptacija stanova, kuhinja po meri, DuoPlusPro projekti
+{% endblock %}
 
 {% block content %}
 
+<main class="font-sans text-stone-800 antialiased">
+    <section class="border-b border-stone-200/60 bg-gradient-to-b from-stone-100/95 to-stone-50 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {% include 'website/components/back.html' %}
+            <div class="mt-8 text-center sm:mt-10 lg:text-left">
+                <p
+                    class="mb-3 inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-sky-600 shadow-sm">
+                    Galerija radova
+                </p>
+                <h1 class="font-serif text-3xl font-bold text-stone-900 sm:text-4xl lg:text-5xl">Projekti</h1>
+                <p class="mx-auto mt-3 max-w-2xl text-base text-stone-600 sm:text-lg lg:mx-0">
+                    Nameštaj po meri i adaptacije — pregled realizovanih enterijera.
+                </p>
+            </div>
+        </div>
+    </section>
 
-
-<section id="section1" class="mt-20 mx-auto max-w-[1200px] px-10 ">
-    {% include 'website/components/back.html' %}
-    {% include 'website/components/some-projects.html' %}
-</section>
+    <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20" aria-label="Lista projekata">
+        {% include 'website/components/some-projects.html' with projects=projects %}
+    </section>
+</main>
 
 {% endblock %}
-

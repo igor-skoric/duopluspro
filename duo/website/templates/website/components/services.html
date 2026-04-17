@@ -1,83 +1,90 @@
-
 {% load static %}
 
-<section id="services" class="mx-auto max-w-[1200px] fade-in-on-scroll ">
-    <div class="px-5 grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <div class="transition hover:-translate-y-6 duration-500 ">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/gips.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Gipsani radovi</h3>
-                    <p>Izrada gipsanih plafona, pregrada i obloga za postizanje modernog i funkcionalnog enterijera.</p>
-                </div>
+<section id="services" class="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8" aria-label="Usluge adaptacije objekta">
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/gips.webp' %}" alt="Gipsani radovi"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/struja.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Električni radovi</h3>
-                    <p>Obuhvata zamenu elektroinstalacija, ugradnju novih utičnica, prekidača, osvetljenja i elektro uređaja.</p>
-                </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Gipsani radovi</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Izrada gipsanih plafona, pregrada i
+                    obloga za moderan i funkcionalan enterijer.</p>
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/voda.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Vodovodni radovi</h3>
-                    <p>Instalacija novih vodovodnih cevi, zamena starih, postavljanje novih sanitarnih uređaja u kupatilima i kuhinjama.</p>
-                </div>
+        </article>
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/struja.webp' %}" alt="Električni radovi"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/plocice.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Postavljanje pločica</h3>
-                    <p>Uključuje ugradnju pločica na podovima i zidovima, u kuhinjama, kupatilima i drugim prostorijama.</p>
-                </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Električni radovi</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Zamena instalacija, nove utičnice i
+                    prekidači, osvetljenje i povezivanje uređaja.</p>
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/podovi.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Zamena poda</h3>
-                    <p>Postavljanje novih podova kao što su parket, laminat, pločice ili tepisi, u skladu sa stilom i potrebama prostora.</p>
-                </div>
+        </article>
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/voda.webp' %}" alt="Vodovodni radovi"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/rusenje.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Rušenje</h3>
-                    <p>Rušenje unutrašnjih zidova i nefunkcionalnih elemenata kako bi se prostor prilagodio novim potrebama.</p>
-                </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Vodovodni radovi</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Nove cevi, zamena starih instalacija i
+                    montaža sanitarija u kupatilu i kuhinji.</p>
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/stolarija.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Stolarija</h3>
-                    <p>Zamena ili ugradnja novih vrata, prozora, roletni, žaluzina i drugih stolarijskih elemenata.</p>
-                </div>
+        </article>
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/plocice.webp' %}" alt="Keramičke pločice"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
             </div>
-        </div>
-        <div class="transition hover:-translate-y-6 duration-500">
-            <div class="rounded-lg shadow-xl bg-white">
-                <img src="{% static 'img/services/gips.webp' %}" alt="gips" class="rounded-t-lg"/>
-                <div class="p-5">
-                    <h3>Gipsani radovi</h3>
-                    <p>Izrada gipsanih plafona, pregrada i obloga za postizanje modernog i funkcionalnog enterijera.</p>
-                </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Postavljanje pločica</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Podovi i zidovi u kuhinji, kupatilu i
+                    ostalim prostorijama — ravno, čisto, trajno.</p>
             </div>
-        </div>
+        </article>
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/podovi.webp' %}" alt="Zamena podova"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Zamena poda</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Parket, laminat, pločice ili drugi
+                    podovi u skladu sa stilom i namenom prostora.</p>
+            </div>
+        </article>
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/rusenje.webp' %}" alt="Rušenje"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Rušenje</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Demontaža zidova i elemenata koji
+                    smetaju novom rasporedu prostorija.</p>
+            </div>
+        </article>
+        <article
+            class="group flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white shadow-md shadow-stone-900/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-stone-900/10">
+            <div class="aspect-[4/3] overflow-hidden">
+                <img src="{% static 'img/services/stolarija.webp' %}" alt="Stolarija"
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+                <h3 class="font-serif text-lg font-semibold text-stone-900">Stolarija</h3>
+                <p class="text-sm leading-relaxed text-stone-600 sm:text-base">Vrata, prozori, roletne i žaluzine —
+                    zamena ili ugradnja novih elemenata.</p>
+            </div>
+        </article>
     </div>
-
 </section>
-
-
-

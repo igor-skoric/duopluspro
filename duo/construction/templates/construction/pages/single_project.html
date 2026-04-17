@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block title %}App{% endblock %}
+{% block title %}Projekat | DuoPlusPro{% endblock %}
+{% block og_title %}Projekat | DuoPlusPro{% endblock %}
+{% block twitter_title %}Projekat | DuoPlusPro{% endblock %}
+{% block meta_description %}Interni pregled projekta u aplikaciji DuoPlusPro.{% endblock %}
+{% block og_description %}Interni pregled projekta DuoPlusPro.{% endblock %}
+{% block twitter_description %}Interni pregled projekta DuoPlusPro.{% endblock %}
+{% block meta_robots %}
+<meta name="robots" content="noindex, nofollow">
+{% endblock %}
 
 {% block content %}
 
@@ -213,7 +221,7 @@
                     <template v-else-if="section.key === 'materials'">
                         <div v-if="project.materials[0]">
                             <div v-for="material in project.materials" :key="material.key" class="mb-1">
-                                <div class="bg-gray-100 rounded-sm p-2 flex justify-between items-center gap-5">
+                                <div class="relative group bg-gray-100 rounded-sm p-2 flex justify-between items-center gap-5">
                                     <div class="flex gap-2">
                                         <p class=" hidden lg:flex">[[material.date]] </p>
                                         <p class="font-semibold">[[material.type_display]] </p>
@@ -225,6 +233,10 @@
                                             class="bg-red-600 text-white p-2 rounded hover:bg-red-700 text-sm">
                                         X
                                     </button>
+                                    <div v-if="material.note"
+                                            class="absolute z-10 hidden group-hover:flex bg-gray-800 text-white text-xs rounded py-1 px-2 bottom-full left-1/2 -translate-x-1/2 mb-1 w-max max-w-xs">
+                                        [[material.note]]
+                                    </div>
                                 </div>
                             </div>
                         </div>
