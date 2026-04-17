@@ -81,9 +81,7 @@
 <!--<body>-->
 <!-- Ikonica koja vodi na početak -->
 
-{% if "/construction/" in request.path %}
-    {% include 'header.html' with website=False %}
-{% else %}
+{% if not "/construction/" in request.path %}
     {% include 'header.html' with website=True %}
 {% endif %}
 

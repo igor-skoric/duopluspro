@@ -14,107 +14,98 @@
 {% block content %}
 
 <div id="app">
-    <div class="container bg-gray-100 p-4 lg:mt-10 rounded-xl shadow-xl">
-        <div class="flex justify-between my-4">
-            <button
-                    @click="goToPrevPage"
-                    :disabled="!prevPage"
-                    class="bg-gray-200 px-4 py-2 rounded "
-            >
-                Prethodna
-            </button>
-
-            <span class="text-sm mt-2">Strana: [[ currentPage ]]</span>
-
-            <button
-                    @click="goToNextPage"
-                    :disabled="!nextPage"
-                    class="bg-gray-200 px-4 py-2 rounded disabled:opacity-50"
-            >
-                Sledeća
-            </button>
-        </div>
-
-
-        <div class="">
-
-            <input
-                    v-model="searchQuery"
-                    type="text"
-                    placeholder="Pretraga po imenu ili klijentu..."
-                    class="mb-2 w-full px-4 py-2 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-150"
-            />
-            <div class="flex justify-end">
-                <div class="flex gap-2">
-                    <div class="relative group">
-                        <button @click="fetchProjects(currentPage)"
-                                class="bg-gray-600 text-white px-1 py-1 rounded hover:bg-gray-700 text-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
-                            </svg>
-                        </button>
-
-                        <!-- Tooltip -->
-                        <div class="hidden md:flex absolute bottom-full mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                            Osveži projekte
-                        </div>
-                    </div>
-
-                    <div class="relative group">
-                        <button @click.stop="openModal('project')"
-                                class="bg-gray-600 text-white px-3 py-2 rounded hover:bg-gray-700 text-sm">
-                            +
-                        </button>
-
-                        <!-- Tooltip -->
-                        <div class="hidden md:flex absolute -left-10 bottom-full mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
-                            Dodaj novi projekat
-                        </div>
-                    </div>
-
+    <main class="mx-auto min-h-[calc(100dvh-1rem)] max-w-[1600px] px-3 py-3 sm:px-5 sm:py-4 lg:px-8 lg:py-5">
+        <div class="rounded-2xl border border-stone-200/90 bg-white/95 p-3 shadow-lg shadow-stone-900/5 sm:p-5 lg:p-6">
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-5">
+                <div class="min-w-0 flex-1">
+                    <label for="search-projects" class="sr-only">Pretraga</label>
+                    <input id="search-projects" v-model="searchQuery" type="search" autocomplete="off"
+                        placeholder="Pretraga: naziv, klijent, kontakt, beleška…"
+                        class="w-full rounded-xl border border-stone-200 bg-stone-50/90 px-4 py-3 text-base text-stone-900 shadow-sm transition placeholder:text-stone-400 focus:border-sky-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-400/30" />
+                </div>
+                <div class="flex flex-shrink-0 flex-wrap items-center gap-2 sm:gap-3">
+                    <label for="filter-status" class="sr-only">Status</label>
+                    <select id="filter-status" v-model="statusFilter"
+                        class="min-w-[11rem] flex-1 rounded-xl border border-stone-200 bg-white px-3 py-3 text-sm font-medium text-stone-800 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-400/30 sm:flex-none sm:min-w-[12rem]">
+                        <option value="">Svi statusi</option>
+                        <option value="active">Aktivno</option>
+                        <option value="planned">Planirano</option>
+                        <option value="paused">Pauzirano</option>
+                        <option value="completed">Završeno</option>
+                        <option value="cancelled">Otkazano</option>
+                    </select>
+                    <button v-if="hasActiveFilters" type="button" @click="clearFilters"
+                        class="rounded-xl border border-stone-300 bg-white px-3 py-3 text-sm font-semibold text-stone-700 shadow-sm transition hover:bg-stone-50 sm:px-4">
+                        Obriši filtere
+                    </button>
+                    <button type="button" @click="fetchProjects(currentPage)"
+                        class="inline-flex shrink-0 items-center justify-center rounded-xl border border-stone-300 bg-white p-3 text-stone-700 shadow-sm transition hover:border-sky-300 hover:bg-sky-50"
+                        title="Osveži" aria-label="Osveži listu">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="h-5 w-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                    </button>
+                    <button type="button" @click.stop="openModal('project')"
+                        class="rounded-xl bg-sky-600 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-sky-600/25 transition hover:bg-sky-500">
+                        + Novi
+                    </button>
                 </div>
             </div>
-        </div>
-        <br>
-        <!-- Projekat kartica -->
-        <div class="flex flex-col gap-5">
 
-            <!-- Jedna kartica projekta -->
-
-            <a v-for="project in projects"
-               :key="project.id"
-               :href="'/construction/single_project/' + project.id"
-               class="inline-block font-medium">
-
-                <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition">
-                    <h2 class="text-lg font-semibold text-gray-800">[[ project.name ]]</h2>
-                    <div class="text-blue-600  bg-gray">
-                        [[project.note]]
-                    </div>
-                    <br>
-                    <p class="text-sm text-gray-600">
-                        [[ project.client ]] - [[ project.contact ]]
-                    </p>
-                    <div class="flex justify-between items-center ">
-                        <p class="text-sm text-gray-600">
-                            [[ formatDate(project.start_date) ]] - [[ formatDate(project.end_date) ]]
-                        </p>
-                        <span :class="'text-sm px-2 py-1  rounded-full ' + statusClass(project.status)">[[ project.status_display ]]</span>
-                    </div>
-
+            <div class="mt-4 flex flex-col gap-3 border-t border-stone-200/80 pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <p class="text-sm text-stone-600">
+                    <span class="font-semibold text-stone-900">[[ totalCount ]]</span> projekata
+                    <span class="text-stone-400">·</span> strana <span class="font-semibold text-stone-900">[[ currentPage ]]</span>
+                </p>
+                <div class="flex items-center gap-2">
+                    <button type="button" @click="goToPrevPage" :disabled="!prevPage"
+                        class="rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-800 shadow-sm transition enabled:hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40">
+                        Prethodna
+                    </button>
+                    <button type="button" @click="goToNextPage" :disabled="!nextPage"
+                        class="rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-stone-800 shadow-sm transition enabled:hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-40">
+                        Sledeća
+                    </button>
                 </div>
-            </a>
+            </div>
 
+            <div v-if="projects.length" class="mt-5 grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3 2xl:grid-cols-4">
+                <a v-for="project in projects" :key="project.id" :href="'/construction/single_project/' + project.id"
+                    class="block min-h-0 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+                    <article
+                        class="flex h-full min-h-[9.5rem] flex-col rounded-xl border border-stone-200 bg-white p-4 shadow-sm transition hover:border-sky-300/70 hover:shadow-md sm:min-h-[10rem] sm:p-4">
+                        <div class="flex items-start justify-between gap-2">
+                            <h2 class="line-clamp-2 text-base font-semibold leading-snug text-stone-900">[[ project.name ]]</h2>
+                            <span :class="'inline-flex shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ' + statusClass(project.status)">
+                                [[ project.status_display ]]
+                            </span>
+                        </div>
+                        <p v-if="project.note" class="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-stone-600">[[ project.note ]]</p>
+                        <p v-else class="mt-2 flex-1 text-xs text-stone-400">—</p>
+                        <p class="mt-2 truncate text-xs font-medium text-stone-700">
+                            <span v-if="project.client">[[ project.client ]]</span>
+                            <span v-if="project.client && project.contact" class="text-stone-400"> · </span>
+                            <span v-if="project.contact" class="truncate">[[ project.contact ]]</span>
+                            <span v-if="!project.client && !project.contact" class="font-normal text-stone-400">—</span>
+                        </p>
+                        <div class="mt-auto flex items-center justify-between gap-2 border-t border-stone-100 pt-2 text-xs text-stone-500">
+                            <span class="tabular-nums">[[ formatDate(project.start_date) ]]</span>
+                            <span v-if="project.cost != null" class="shrink-0 font-medium text-stone-700">[[ project.cost ]] RSD</span>
+                        </div>
+                    </article>
+                </a>
+            </div>
+
+            <p v-else class="mt-8 rounded-xl border border-dashed border-stone-200 bg-stone-50/80 py-16 text-center text-sm text-stone-600">
+                Nema projekata za prikaz. Proširi pretragu ili obriši filtere.
+            </p>
         </div>
-
-    </div>
+    </main>
     {% include 'construction/components/dialogs_app.html' %}
 </div>
-
 
 <script src="{% static 'js/app/app.js' %}"></script>
 
 {% endblock %}
-

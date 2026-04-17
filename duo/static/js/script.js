@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const contact = document.getElementById('contact');
   const toggleButton = document.getElementById('toggleMenu');
 
+  if (!toggleButton || !menu) {
+    return;
+  }
+
   toggleButton.addEventListener('click', () => {
     if (menu.classList.contains('max-h-0')) {
         menu.classList.remove('max-h-0');
