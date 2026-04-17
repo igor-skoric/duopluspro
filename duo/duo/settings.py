@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4pw$gkrj_%a6gy28lxm&-tsul$3&bwd1dt9w=4b$oe-6+&el_y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['duopluspro.rs', 'www.duopluspro.rs', '127.0.0.1', 'localhost']
 

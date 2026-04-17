@@ -13,17 +13,18 @@
 
 {% block content %}
 
+{% include 'construction/components/app_nav.html' %}
+
 <div id="single_project">
     <div class="container mx-auto max-w-6xl bg-gray-100 p-4 py-6 sm:p-6 sm:py-8 rounded-xl shadow-xl">
-        <div class=" ">
-            <a href="{% url 'app' %}" class="flex gap-2 p-3 ">
-                    <span class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
-                        </svg>
-                    </span>
-                Nazad</a>
+        <div class="px-1 pb-2">
+            <a href="{% url 'app' %}" class="inline-flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold text-stone-700 transition hover:bg-white/80">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="size-5 shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                </svg>
+                Nazad na projekte
+            </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
             <div class="bg-white rounded-lg shadow-lg  p-6 relative">

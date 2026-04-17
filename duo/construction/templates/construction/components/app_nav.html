@@ -1,0 +1,26 @@
+{% with nav=request.resolver_match.url_name %}
+<header class="mx-auto max-w-[1600px] px-3 pt-3 sm:px-5 sm:pt-4 lg:px-8 lg:pt-5">
+    <nav
+        class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-200/90 bg-white/95 px-4 py-3 shadow-lg shadow-stone-900/5 sm:px-5">
+        <div class="flex min-w-0 flex-wrap items-center gap-2 sm:gap-3">
+            <span class="text-sm font-semibold tracking-tight text-stone-900">DuoPlusPro</span>
+            <span class="hidden text-stone-300 sm:inline" aria-hidden="true">|</span>
+            <a href="{% url 'app' %}"
+                class="rounded-lg px-3 py-2 text-sm font-semibold transition {% if nav == 'app' %}bg-sky-600 text-white shadow-sm shadow-sky-600/20{% else %}text-stone-700 hover:bg-stone-100{% endif %}">
+                Projekti
+            </a>
+            <a href="{% url 'statistika' %}"
+                class="rounded-lg px-3 py-2 text-sm font-semibold transition {% if nav == 'statistika' %}bg-sky-600 text-white shadow-sm shadow-sky-600/20{% else %}text-stone-700 hover:bg-stone-100{% endif %}">
+                Statistika
+            </a>
+        </div>
+        <form method="post" action="{% url 'construction_logout' %}" class="shrink-0">
+            {% csrf_token %}
+            <button type="submit"
+                class="rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm font-semibold text-stone-800 shadow-sm transition hover:bg-stone-50">
+                Odjava
+            </button>
+        </form>
+    </nav>
+</header>
+{% endwith %}
